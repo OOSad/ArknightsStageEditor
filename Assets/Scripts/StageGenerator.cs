@@ -17,6 +17,7 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> enemySpawnTiles = new List<GameObject>();
     public List<GameObject> playerSpawnTiles = new List<GameObject>();
 
+
     public int stageWidthEditor;
     public int stageHeightEditor;
     public int numberOfHigherGroundTilesEditor;
@@ -349,5 +350,8 @@ public class StageGenerator : MonoBehaviour
         regenerateStage = false;
     }
 
-    
+    public void RegenerateStage()
+    {
+        regenerateStage = true;
+    }
 }
