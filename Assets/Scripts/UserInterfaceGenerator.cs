@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UserInterface : MonoBehaviour
+public class UserInterfaceGenerator : MonoBehaviour
 {
     public GameObject stageGenerator;
 
@@ -14,6 +14,8 @@ public class UserInterface : MonoBehaviour
     public InputField numberOfBottomlessPitsField;
     public InputField numberOfPlayerSpawnsField;
     public InputField numberOfEnemySpawnsField;
+
+    public GameObject editorModeUICanvas;
 
 
     private void Start()
@@ -56,5 +58,11 @@ public class UserInterface : MonoBehaviour
         stageGenerator.GetComponent<StageGenerator>().numberOfPlayerSpawnsEditor = Convert.ToInt32(numberOfPlayerSpawnsField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfEnemySpawnsEditor = Convert.ToInt32(numberOfEnemySpawnsField.text);
 
+    }
+
+    public void SwitchToEditorMode()
+    {
+        editorModeUICanvas.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

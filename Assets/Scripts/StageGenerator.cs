@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class StageGenerator : MonoBehaviour
 {
+    public Keyboard keyboard;
     public GameObject higherGround;
     public GameObject lowerGround;
     public GameObject edgeGround;
@@ -38,8 +40,6 @@ public class StageGenerator : MonoBehaviour
 
     private void Start()
     {
-        WebGLInput.captureAllKeyboardInput = true;
-
         DestroyStage();
 
         CreateLowerGround();
