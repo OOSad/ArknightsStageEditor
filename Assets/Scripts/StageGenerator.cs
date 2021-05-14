@@ -38,6 +38,8 @@ public class StageGenerator : MonoBehaviour
 
     private void Start()
     {
+        WebGLInput.captureAllKeyboardInput = true;
+
         DestroyStage();
 
         CreateLowerGround();
