@@ -251,6 +251,8 @@ public class StageGenerator : MonoBehaviour
                 playerSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
                 lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+
+                Destroy(selectedTile);
             }
         }
     }
@@ -286,6 +288,8 @@ public class StageGenerator : MonoBehaviour
                 enemySpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
                 lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+
+                Destroy(selectedTile);
             }
         }
     }
