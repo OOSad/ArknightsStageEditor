@@ -15,6 +15,8 @@ public class UserInterfaceGenerator : MonoBehaviour
     public InputField numberOfPlayerSpawnsField;
     public InputField numberOfEnemySpawnsField;
 
+    public Toggle playerSpawnOutside;
+
     public GameObject editorModeUICanvas;
 
 
@@ -22,11 +24,6 @@ public class UserInterfaceGenerator : MonoBehaviour
     {
         // Update UI elements after the program has had a moment to load.
         Invoke("UpdateUIInputFields", 0.5f);
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void UpdateUIInputFields()
@@ -58,6 +55,33 @@ public class UserInterfaceGenerator : MonoBehaviour
         stageGenerator.GetComponent<StageGenerator>().numberOfPlayerSpawnsEditor = Convert.ToInt32(numberOfPlayerSpawnsField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfEnemySpawnsEditor = Convert.ToInt32(numberOfEnemySpawnsField.text);
 
+    }
+
+
+    public void TogglePlayerSpawnsOnOutside(Toggle playerSpawnOutsideToggle)
+    {
+        if (playerSpawnOutsideToggle.isOn)
+        {
+            stageGenerator.GetComponent<StageGenerator>().playerSpawnOnOutside = true;
+        }
+
+        else
+        {
+            stageGenerator.GetComponent<StageGenerator>().playerSpawnOnOutside = false;
+        }
+    }
+
+    public void ToggleEnemySpawnsOnOutside(Toggle enemySpawnOutsideToggle)
+    {
+        if (enemySpawnOutsideToggle.isOn)
+        {
+            stageGenerator.GetComponent<StageGenerator>().enemySpawnOnOutside = true;
+        }
+
+        else
+        {
+            stageGenerator.GetComponent<StageGenerator>().enemySpawnOnOutside = false;
+        }
     }
 
     public void SwitchToEditorMode()
