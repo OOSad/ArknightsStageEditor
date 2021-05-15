@@ -9,6 +9,7 @@ public class StageEditorBlocks : MonoBehaviour
     public GameObject playerSpawnTile;
     public GameObject enemySpawnTile;
     public GameObject bottomlessPitTile;
+    public GameObject lowerGroundRestricted;
 
     public GameObject currentlySelectedBlock;
 
@@ -17,6 +18,7 @@ public class StageEditorBlocks : MonoBehaviour
     public bool playerSpawn;
     public bool enemySpawn;
     public bool bottomlessPit;
+    public bool lowerRestricted;
 
     private void Update()
     {
@@ -48,6 +50,12 @@ public class StageEditorBlocks : MonoBehaviour
         {
             currentlySelectedBlock = bottomlessPitTile;
             bottomlessPit = false;
+        }
+
+        if (lowerRestricted)
+        {
+            currentlySelectedBlock = lowerGroundRestricted;
+            lowerRestricted = false;
         }
     }
 }

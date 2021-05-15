@@ -42,6 +42,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Melee Restricted"):
+                {
+                    QueueUpLowerGroundRestrictedTile();
+                    break;
+                }
+
             default: break;
         }
     }
@@ -69,6 +75,11 @@ public class UserInterfaceEditor : MonoBehaviour
     public void QueueUpEnemySpawnTile()
     {
         GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemySpawn = true;
+    }
+
+    public void QueueUpLowerGroundRestrictedTile()
+    {
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().lowerRestricted = true;
     }
 
 

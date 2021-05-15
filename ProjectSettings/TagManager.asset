@@ -15,6 +15,7 @@ TagManager:
   - StageEditorBlocks
   - StageDatabase
   - TileCheckbox
+  - LowerGroundRestricted
   layers:
   - Default
   - TransparentFX
