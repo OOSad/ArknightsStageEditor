@@ -11,6 +11,7 @@ public class StageGenerator : MonoBehaviour
     public GameObject playerSpawn;
     public GameObject bottomlessPit;
     public GameObject lowerGroundRestricted;
+    public GameObject higherGroundRestricted;
 
     public List<GameObject> lowerGroundTiles = new List<GameObject>();
     public List<GameObject> edgeOfStageTiles = new List<GameObject>();
@@ -19,6 +20,7 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> enemySpawnTiles = new List<GameObject>();
     public List<GameObject> playerSpawnTiles = new List<GameObject>();
     public List<GameObject> lowerGroundRestrictedTiles = new List<GameObject>();
+    public List<GameObject> higherGroundRestrictedTiles = new List<GameObject>();
 
 
     public int stageWidthEditor;
@@ -28,6 +30,7 @@ public class StageGenerator : MonoBehaviour
     public int numberOfEnemySpawnsEditor;
     public int numberOfPlayerSpawnsEditor;
     public int numberOfLowerGroundRestrictedEditor;
+    public int numberOfHigherGroundRestrictedEditor;
 
     private int stageWidth = 10;
     private int stageHeight = 5;
@@ -36,6 +39,7 @@ public class StageGenerator : MonoBehaviour
     private int numberOfEnemySpawns = 1;
     private int numberOfPlayerSpawns = 1;
     private int numberOfLowerGroundRestricted = 1;
+    private int numberOfHigherGroundRestricted = 1;
 
     public bool playerSpawnOnOutside = false;
     public bool enemySpawnOnOutside = false;
@@ -56,6 +60,7 @@ public class StageGenerator : MonoBehaviour
         PlaceBottomlessPitsRandomly();
 
         PlaceLowerGroundRestrictedRandomly();
+        PlaceHigherGroundRestrictedRandomly();
 
         UpdateEditorValues();
     }
@@ -95,6 +100,7 @@ public class StageGenerator : MonoBehaviour
             numberOfEnemySpawns != numberOfEnemySpawnsEditor ||
             numberOfPlayerSpawns != numberOfPlayerSpawnsEditor ||
             numberOfLowerGroundRestricted != numberOfLowerGroundRestrictedEditor ||
+            numberOfHigherGroundRestricted != numberOfHigherGroundRestrictedEditor ||
             regenerateStage == true)
         {
             DestroyStage();
@@ -112,6 +118,7 @@ public class StageGenerator : MonoBehaviour
             PlaceBottomlessPitsRandomly();
 
             PlaceLowerGroundRestrictedRandomly();
+            PlaceHigherGroundRestrictedRandomly();
         }
     }
 
@@ -321,6 +328,25 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
+    public void PlaceHigherGroundRestrictedRandomly()
+    {
+        for (int i = 0; i < numberOfHigherGroundRestricted; i++)
+        {
+            higherGroundRestrictedTiles.Add(Instantiate(higherGroundRestricted));
+
+            GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+
+            higherGroundRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1f, selectedTile.transform.position.z);
+
+            higherGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
+            higherGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
+
+            lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+
+            Destroy(selectedTile);
+        }
+    }
+
     private void DestroyStage()
     {
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("HigherGround").Length; i++)
@@ -358,6 +384,11 @@ public class StageGenerator : MonoBehaviour
             Destroy(GameObject.FindGameObjectsWithTag("LowerGroundRestricted")[i]);
         }
 
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("HigherGroundRestricted").Length; i++)
+        {
+            Destroy(GameObject.FindGameObjectsWithTag("HigherGroundRestricted")[i]);
+        }
+
         higherGroundTiles.Clear();
         lowerGroundTiles.Clear();
         edgeOfStageTiles.Clear();
@@ -365,6 +396,7 @@ public class StageGenerator : MonoBehaviour
         enemySpawnTiles.Clear();
         playerSpawnTiles.Clear();
         lowerGroundRestrictedTiles.Clear();
+        higherGroundRestrictedTiles.Clear();
     }
 
     private void UpdateEditorValues()
@@ -376,6 +408,7 @@ public class StageGenerator : MonoBehaviour
         numberOfEnemySpawnsEditor = numberOfEnemySpawns;
         numberOfPlayerSpawnsEditor = numberOfPlayerSpawns;
         numberOfLowerGroundRestrictedEditor = numberOfLowerGroundRestricted;
+        numberOfHigherGroundRestrictedEditor = numberOfHigherGroundRestricted;
     }
 
     private void UpdatePrivateStageValues()
@@ -387,6 +420,7 @@ public class StageGenerator : MonoBehaviour
         numberOfEnemySpawns = numberOfEnemySpawnsEditor;
         numberOfPlayerSpawns = numberOfPlayerSpawnsEditor;
         numberOfLowerGroundRestricted = numberOfLowerGroundRestrictedEditor;
+        numberOfHigherGroundRestricted = numberOfHigherGroundRestrictedEditor;
 
         regenerateStage = false;
     }

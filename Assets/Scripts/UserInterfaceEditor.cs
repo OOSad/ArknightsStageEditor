@@ -48,6 +48,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Ranged Restricted"):
+                {
+                    QueueUpHigherGroundRestrictedTile();
+                    break;
+                }
+
             default: break;
         }
     }
@@ -80,6 +86,11 @@ public class UserInterfaceEditor : MonoBehaviour
     public void QueueUpLowerGroundRestrictedTile()
     {
         GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().lowerRestricted = true;
+    }
+
+    public void QueueUpHigherGroundRestrictedTile()
+    {
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().higherRestricted = true;
     }
 
 

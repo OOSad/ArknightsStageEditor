@@ -15,6 +15,7 @@ public class UserInterfaceGenerator : MonoBehaviour
     public InputField numberOfPlayerSpawnsField;
     public InputField numberOfEnemySpawnsField;
     public InputField numberOfGroundTilesRestricted;
+    public InputField numberOfRangedTilesRestricted;
 
     public Toggle playerSpawnOutside;
 
@@ -36,6 +37,7 @@ public class UserInterfaceGenerator : MonoBehaviour
         numberOfPlayerSpawnsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfPlayerSpawnsEditor);
         numberOfEnemySpawnsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfEnemySpawnsEditor);
         numberOfGroundTilesRestricted.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfLowerGroundRestrictedEditor);
+        numberOfRangedTilesRestricted.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfHigherGroundRestrictedEditor);
     }
 
     public void UpdateEditorValues()
@@ -57,6 +59,7 @@ public class UserInterfaceGenerator : MonoBehaviour
         stageGenerator.GetComponent<StageGenerator>().numberOfPlayerSpawnsEditor = Convert.ToInt32(numberOfPlayerSpawnsField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfEnemySpawnsEditor = Convert.ToInt32(numberOfEnemySpawnsField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfLowerGroundRestrictedEditor = Convert.ToInt32(numberOfGroundTilesRestricted.text);
+        stageGenerator.GetComponent<StageGenerator>().numberOfHigherGroundRestrictedEditor = Convert.ToInt32(numberOfRangedTilesRestricted.text);
     }
 
 
