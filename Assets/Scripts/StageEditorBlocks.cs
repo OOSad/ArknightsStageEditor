@@ -11,6 +11,7 @@ public class StageEditorBlocks : MonoBehaviour
     public GameObject bottomlessPitTile;
     public GameObject lowerGroundRestricted;
     public GameObject higherGroundRestricted;
+    public GameObject lowerGroundImpassable;
 
     public GameObject currentlySelectedBlock;
 
@@ -21,6 +22,7 @@ public class StageEditorBlocks : MonoBehaviour
     public bool bottomlessPit;
     public bool lowerRestricted;
     public bool higherRestricted;
+    public bool lowerImpassable;
 
     private void Update()
     {
@@ -64,6 +66,12 @@ public class StageEditorBlocks : MonoBehaviour
         {
             currentlySelectedBlock = higherGroundRestricted;
             higherRestricted = false;
+        }
+
+        if (lowerImpassable)
+        {
+            currentlySelectedBlock = lowerGroundImpassable;
+            lowerImpassable = false;
         }
     }
 }

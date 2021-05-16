@@ -54,6 +54,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Melee Impassable"):
+                {
+                    QueueUpLowerGroundImpassableTile();
+                    break;
+                }
+
             default: break;
         }
     }
@@ -91,6 +97,11 @@ public class UserInterfaceEditor : MonoBehaviour
     public void QueueUpHigherGroundRestrictedTile()
     {
         GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().higherRestricted = true;
+    }
+
+    public void QueueUpLowerGroundImpassableTile()
+    {
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().lowerImpassable = true;
     }
 
 

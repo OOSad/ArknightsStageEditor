@@ -17,6 +17,7 @@ TagManager:
   - TileCheckbox
   - LowerGroundRestricted
   - HigherGroundRestricted
+  - LowerGroundImpassable
   layers:
   - Default
   - TransparentFX
