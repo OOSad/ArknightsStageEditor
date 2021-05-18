@@ -13,6 +13,7 @@ public class StageGenerator : MonoBehaviour
     public GameObject higherGroundRestricted;
     public GameObject lowerGroundImpassable;
     public GameObject enemyDroneSpawn;
+    public GameObject rangedCamouflage;
 
     public List<GameObject> lowerGroundTiles = new List<GameObject>();
     public List<GameObject> edgeOfStageTiles = new List<GameObject>();
@@ -24,6 +25,7 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> higherGroundRestrictedTiles = new List<GameObject>();
     public List<GameObject> lowerGroundImpassableTiles = new List<GameObject>();
     public List<GameObject> enemyDroneSpawnTiles = new List<GameObject>();
+    public List<GameObject> rangedCamouflageTiles = new List<GameObject>();
 
 
     public int stageWidthEditor;
@@ -36,6 +38,7 @@ public class StageGenerator : MonoBehaviour
     public int numberOfHigherGroundRestrictedEditor;
     public int numberOfLowerGroundImpassableEditor;
     public int numberOfEnemyDroneSpawnsEditor;
+    public int numberOfRangedCamouflageTilesEditor;
 
     private int stageWidth = 10;
     private int stageHeight = 5;
@@ -47,6 +50,7 @@ public class StageGenerator : MonoBehaviour
     private int numberOfHigherGroundRestricted = 1;
     private int numberOfLowerGroundImpassable = 1;
     private int numberOfEnemyDroneSpawns = 1;
+    private int numberOfRangedCamouflageTiles = 1;
 
     public bool playerSpawnOnOutside = false;
     public bool enemySpawnOnOutside = false;
@@ -71,6 +75,8 @@ public class StageGenerator : MonoBehaviour
         PlaceHigherGroundRestrictedRandomly();
 
         PlaceLowerGroundImpassableRandomly();
+
+        PlaceRangedCamouflageTilesRandomly();
 
         UpdateEditorValues();
     }
@@ -113,6 +119,7 @@ public class StageGenerator : MonoBehaviour
             numberOfLowerGroundRestricted != numberOfLowerGroundRestrictedEditor ||
             numberOfHigherGroundRestricted != numberOfHigherGroundRestrictedEditor ||
             numberOfLowerGroundImpassable != numberOfLowerGroundImpassableEditor ||
+            numberOfRangedCamouflageTiles != numberOfRangedCamouflageTilesEditor ||
             regenerateStage == true)
         {
             DestroyStage();
@@ -134,6 +141,8 @@ public class StageGenerator : MonoBehaviour
             PlaceHigherGroundRestrictedRandomly();
 
             PlaceLowerGroundImpassableRandomly();
+
+            PlaceRangedCamouflageTilesRandomly();
         }
     }
 
@@ -418,6 +427,25 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
+    private void PlaceRangedCamouflageTilesRandomly()
+    {
+        for (int i = 0; i < numberOfRangedCamouflageTiles; i++)
+        {
+            rangedCamouflageTiles.Add(Instantiate(rangedCamouflage));
+
+            GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+
+            rangedCamouflageTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1, selectedTile.transform.position.z);
+
+            rangedCamouflageTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
+            rangedCamouflageTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
+
+
+            lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+            Destroy(selectedTile);
+        }
+    }
+
     private void DestroyStage()
     {
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("HigherGround").Length; i++)
@@ -470,6 +498,11 @@ public class StageGenerator : MonoBehaviour
             Destroy(GameObject.FindGameObjectsWithTag("LowerGroundImpassable")[i]);
         }
 
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("RangedCamouflage").Length; i++)
+        {
+            Destroy(GameObject.FindGameObjectsWithTag("RangedCamouflage")[i]);
+        }
+
         higherGroundTiles.Clear();
         lowerGroundTiles.Clear();
         edgeOfStageTiles.Clear();
@@ -480,6 +513,7 @@ public class StageGenerator : MonoBehaviour
         lowerGroundRestrictedTiles.Clear();
         higherGroundRestrictedTiles.Clear();
         lowerGroundImpassableTiles.Clear();
+        rangedCamouflageTiles.Clear();
     }
 
     private void UpdateEditorValues()
@@ -494,6 +528,7 @@ public class StageGenerator : MonoBehaviour
         numberOfLowerGroundRestrictedEditor = numberOfLowerGroundRestricted;
         numberOfHigherGroundRestrictedEditor = numberOfHigherGroundRestricted;
         numberOfLowerGroundImpassableEditor = numberOfLowerGroundImpassable;
+        numberOfRangedCamouflageTilesEditor = numberOfRangedCamouflageTiles;
     }
 
     private void UpdatePrivateStageValues()
@@ -508,6 +543,7 @@ public class StageGenerator : MonoBehaviour
         numberOfLowerGroundRestricted = numberOfLowerGroundRestrictedEditor;
         numberOfHigherGroundRestricted = numberOfHigherGroundRestrictedEditor;
         numberOfLowerGroundImpassable = numberOfLowerGroundImpassableEditor;
+        numberOfRangedCamouflageTiles = numberOfRangedCamouflageTilesEditor;
 
         regenerateStage = false;
     }

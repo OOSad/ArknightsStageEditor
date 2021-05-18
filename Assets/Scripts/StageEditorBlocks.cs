@@ -10,9 +10,11 @@ public class StageEditorBlocks : MonoBehaviour
     public GameObject enemySpawnTile;
     public GameObject enemyDroneSpawnTile;
     public GameObject bottomlessPitTile;
-    public GameObject lowerGroundRestricted;
-    public GameObject higherGroundRestricted;
-    public GameObject lowerGroundImpassable;
+    public GameObject lowerGroundRestrictedTile;
+    public GameObject higherGroundRestrictedTile;
+    public GameObject lowerGroundImpassableTile;
+    public GameObject rangedCamouflageTile;
+
 
     public GameObject currentlySelectedBlock;
 
@@ -25,6 +27,7 @@ public class StageEditorBlocks : MonoBehaviour
     public bool lowerRestricted;
     public bool higherRestricted;
     public bool lowerImpassable;
+    public bool rangedCamouflage;
 
     private void Update()
     {
@@ -66,20 +69,26 @@ public class StageEditorBlocks : MonoBehaviour
 
         if (lowerRestricted)
         {
-            currentlySelectedBlock = lowerGroundRestricted;
+            currentlySelectedBlock = lowerGroundRestrictedTile;
             lowerRestricted = false;
         }
 
         if (higherRestricted)
         {
-            currentlySelectedBlock = higherGroundRestricted;
+            currentlySelectedBlock = higherGroundRestrictedTile;
             higherRestricted = false;
         }
 
         if (lowerImpassable)
         {
-            currentlySelectedBlock = lowerGroundImpassable;
+            currentlySelectedBlock = lowerGroundImpassableTile;
             lowerImpassable = false;
+        }
+
+        if (rangedCamouflage)
+        {
+            currentlySelectedBlock = rangedCamouflageTile;
+            rangedCamouflage = false;
         }
     }
 }

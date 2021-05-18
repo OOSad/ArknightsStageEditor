@@ -66,6 +66,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Ranged Camouflage"):
+                {
+                    QueueUpRangedCamouflageTile();
+                    break;
+                }
+
             default: break;
         }
     }
@@ -113,6 +119,11 @@ public class UserInterfaceEditor : MonoBehaviour
     public void QueueUpLowerGroundImpassableTile()
     {
         GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().lowerImpassable = true;
+    }
+
+    public void QueueUpRangedCamouflageTile()
+    {
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedCamouflage = true;
     }
 
 
