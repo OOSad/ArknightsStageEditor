@@ -14,6 +14,7 @@ public class UserInterfaceGenerator : MonoBehaviour
     public InputField numberOfBottomlessPitsField;
     public InputField numberOfPlayerSpawnsField;
     public InputField numberOfEnemySpawnsField;
+    public InputField numberOfEnemyDroneSpawnsField;
     public InputField numberOfGroundTilesRestricted;
     public InputField numberOfRangedTilesRestricted;
     public InputField numberOfGroundTilesImpassable;
@@ -37,6 +38,7 @@ public class UserInterfaceGenerator : MonoBehaviour
         numberOfBottomlessPitsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfBottomlessPitsEditor);
         numberOfPlayerSpawnsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfPlayerSpawnsEditor);
         numberOfEnemySpawnsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfEnemySpawnsEditor);
+        numberOfEnemyDroneSpawnsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfEnemyDroneSpawnsEditor);
         numberOfGroundTilesRestricted.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfLowerGroundRestrictedEditor);
         numberOfRangedTilesRestricted.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfHigherGroundRestrictedEditor);
         numberOfGroundTilesImpassable.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfLowerGroundImpassableEditor);
@@ -60,6 +62,7 @@ public class UserInterfaceGenerator : MonoBehaviour
         stageGenerator.GetComponent<StageGenerator>().numberOfBottomlessPitsEditor = Convert.ToInt32(numberOfBottomlessPitsField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfPlayerSpawnsEditor = Convert.ToInt32(numberOfPlayerSpawnsField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfEnemySpawnsEditor = Convert.ToInt32(numberOfEnemySpawnsField.text);
+        stageGenerator.GetComponent<StageGenerator>().numberOfEnemyDroneSpawnsEditor = Convert.ToInt32(numberOfEnemyDroneSpawnsField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfLowerGroundRestrictedEditor = Convert.ToInt32(numberOfGroundTilesRestricted.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfHigherGroundRestrictedEditor = Convert.ToInt32(numberOfRangedTilesRestricted.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfLowerGroundImpassableEditor = Convert.ToInt32(numberOfGroundTilesImpassable.text);

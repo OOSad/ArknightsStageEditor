@@ -8,6 +8,7 @@ public class StageEditorBlocks : MonoBehaviour
     public GameObject higherGroundTile;
     public GameObject playerSpawnTile;
     public GameObject enemySpawnTile;
+    public GameObject enemyDroneSpawnTile;
     public GameObject bottomlessPitTile;
     public GameObject lowerGroundRestricted;
     public GameObject higherGroundRestricted;
@@ -19,6 +20,7 @@ public class StageEditorBlocks : MonoBehaviour
     public bool higherGround;
     public bool playerSpawn;
     public bool enemySpawn;
+    public bool enemyDroneSpawn;
     public bool bottomlessPit;
     public bool lowerRestricted;
     public bool higherRestricted;
@@ -48,6 +50,12 @@ public class StageEditorBlocks : MonoBehaviour
         {
             currentlySelectedBlock = enemySpawnTile;
             enemySpawn = false;
+        }
+
+        if (enemyDroneSpawn)
+        {
+            currentlySelectedBlock = enemyDroneSpawnTile;
+            enemyDroneSpawn = false;
         }
 
         if (bottomlessPit)

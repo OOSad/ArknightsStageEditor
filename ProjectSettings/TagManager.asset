@@ -18,6 +18,7 @@ TagManager:
   - LowerGroundRestricted
   - HigherGroundRestricted
   - LowerGroundImpassable
+  - EnemyDroneSpawn
   layers:
   - Default
   - TransparentFX

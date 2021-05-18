@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class StageGenerator : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class StageGenerator : MonoBehaviour
     public GameObject lowerGroundRestricted;
     public GameObject higherGroundRestricted;
     public GameObject lowerGroundImpassable;
+    public GameObject enemyDroneSpawn;
 
     public List<GameObject> lowerGroundTiles = new List<GameObject>();
     public List<GameObject> edgeOfStageTiles = new List<GameObject>();
@@ -23,6 +23,7 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> lowerGroundRestrictedTiles = new List<GameObject>();
     public List<GameObject> higherGroundRestrictedTiles = new List<GameObject>();
     public List<GameObject> lowerGroundImpassableTiles = new List<GameObject>();
+    public List<GameObject> enemyDroneSpawnTiles = new List<GameObject>();
 
 
     public int stageWidthEditor;
@@ -34,6 +35,7 @@ public class StageGenerator : MonoBehaviour
     public int numberOfLowerGroundRestrictedEditor;
     public int numberOfHigherGroundRestrictedEditor;
     public int numberOfLowerGroundImpassableEditor;
+    public int numberOfEnemyDroneSpawnsEditor;
 
     private int stageWidth = 10;
     private int stageHeight = 5;
@@ -44,6 +46,7 @@ public class StageGenerator : MonoBehaviour
     private int numberOfLowerGroundRestricted = 1;
     private int numberOfHigherGroundRestricted = 1;
     private int numberOfLowerGroundImpassable = 1;
+    private int numberOfEnemyDroneSpawns = 1;
 
     public bool playerSpawnOnOutside = false;
     public bool enemySpawnOnOutside = false;
@@ -60,6 +63,7 @@ public class StageGenerator : MonoBehaviour
 
         PlacePlayerSpawnsRandomly();
         PlaceEnemySpawnsRandomly();
+        PlaceEnemyDroneSpawnsRandomly();
 
         PlaceBottomlessPitsRandomly();
 
@@ -104,6 +108,7 @@ public class StageGenerator : MonoBehaviour
             numberOfHigherGroundTiles != numberOfHigherGroundTilesEditor ||
             numberOfBottomlessPits != numberOfBottomlessPitsEditor ||
             numberOfEnemySpawns != numberOfEnemySpawnsEditor ||
+            numberOfEnemyDroneSpawns != numberOfEnemyDroneSpawnsEditor ||
             numberOfPlayerSpawns != numberOfPlayerSpawnsEditor ||
             numberOfLowerGroundRestricted != numberOfLowerGroundRestrictedEditor ||
             numberOfHigherGroundRestricted != numberOfHigherGroundRestrictedEditor ||
@@ -121,6 +126,7 @@ public class StageGenerator : MonoBehaviour
 
             PlacePlayerSpawnsRandomly();
             PlaceEnemySpawnsRandomly();
+            PlaceEnemyDroneSpawnsRandomly();
 
             PlaceBottomlessPitsRandomly();
 
@@ -318,6 +324,43 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
+    public void PlaceEnemyDroneSpawnsRandomly()
+    {
+        for (int i = 0; i < numberOfEnemyDroneSpawns; i++)
+        {
+            enemyDroneSpawnTiles.Add(Instantiate(enemyDroneSpawn));
+        }
+
+        for (int i = 0; i < enemyDroneSpawnTiles.Count; i++)
+        {
+            if (enemySpawnOnOutside)
+            {
+                GameObject selectedEdgeTile = edgeOfStageTiles[Random.Range(0, edgeOfStageTiles.Count)];
+
+                enemyDroneSpawnTiles[i].transform.position = new Vector3(selectedEdgeTile.transform.position.x, 1f, selectedEdgeTile.transform.position.z);
+
+                enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[0];
+                enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[1];
+
+                edgeOfStageTiles.RemoveAt(edgeOfStageTiles.IndexOf(selectedEdgeTile));
+            }
+
+            else
+            {
+                GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+
+                enemyDroneSpawnTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1f, selectedTile.transform.position.z);
+
+                enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
+                enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
+
+                lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+
+                Destroy(selectedTile);
+            }
+        }
+    }
+
     public void PlaceLowerGroundRestrictedRandomly()
     {
         for (int i = 0; i < numberOfLowerGroundRestricted; i++)
@@ -402,6 +445,11 @@ public class StageGenerator : MonoBehaviour
             Destroy(GameObject.FindGameObjectsWithTag("EnemySpawn")[i]);
         }
 
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("EnemyDroneSpawn").Length; i++)
+        {
+            Destroy(GameObject.FindGameObjectsWithTag("EnemyDroneSpawn")[i]);
+        }
+
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("PlayerSpawn").Length; i++)
         {
             Destroy(GameObject.FindGameObjectsWithTag("PlayerSpawn")[i]);
@@ -427,6 +475,7 @@ public class StageGenerator : MonoBehaviour
         edgeOfStageTiles.Clear();
         bottomlessPitTiles.Clear();
         enemySpawnTiles.Clear();
+        enemyDroneSpawnTiles.Clear();
         playerSpawnTiles.Clear();
         lowerGroundRestrictedTiles.Clear();
         higherGroundRestrictedTiles.Clear();
@@ -440,6 +489,7 @@ public class StageGenerator : MonoBehaviour
         numberOfHigherGroundTilesEditor = numberOfHigherGroundTiles;
         numberOfBottomlessPitsEditor = numberOfBottomlessPits;
         numberOfEnemySpawnsEditor = numberOfEnemySpawns;
+        numberOfEnemyDroneSpawnsEditor = numberOfEnemyDroneSpawns;
         numberOfPlayerSpawnsEditor = numberOfPlayerSpawns;
         numberOfLowerGroundRestrictedEditor = numberOfLowerGroundRestricted;
         numberOfHigherGroundRestrictedEditor = numberOfHigherGroundRestricted;
@@ -453,6 +503,7 @@ public class StageGenerator : MonoBehaviour
         numberOfHigherGroundTiles = numberOfHigherGroundTilesEditor;
         numberOfBottomlessPits = numberOfBottomlessPitsEditor;
         numberOfEnemySpawns = numberOfEnemySpawnsEditor;
+        numberOfEnemyDroneSpawns = numberOfEnemyDroneSpawnsEditor;
         numberOfPlayerSpawns = numberOfPlayerSpawnsEditor;
         numberOfLowerGroundRestricted = numberOfLowerGroundRestrictedEditor;
         numberOfHigherGroundRestricted = numberOfHigherGroundRestrictedEditor;

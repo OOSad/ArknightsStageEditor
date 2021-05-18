@@ -60,6 +60,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Drone Spawn"):
+                {
+                    QueueUpEnemyDroneSpawnTile();
+                    break;
+                }
+
             default: break;
         }
     }
@@ -87,6 +93,11 @@ public class UserInterfaceEditor : MonoBehaviour
     public void QueueUpEnemySpawnTile()
     {
         GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemySpawn = true;
+    }
+
+    public void QueueUpEnemyDroneSpawnTile()
+    {
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemyDroneSpawn = true;
     }
 
     public void QueueUpLowerGroundRestrictedTile()
