@@ -89,9 +89,9 @@ public class StageGenerator : MonoBehaviour
             numberOfHigherGroundTilesEditor = 0;
         }
 
-        if (stageWidthEditor > 11)
+        if (stageWidthEditor > 22)
         {
-            stageWidthEditor = 11;
+            stageWidthEditor = 22;
         }
 
         if (stageWidthEditor < 7)
@@ -99,9 +99,9 @@ public class StageGenerator : MonoBehaviour
             stageWidthEditor = 7;
         }
 
-        if (stageHeightEditor > 8)
+        if (stageHeightEditor > 16)
         {
-            stageHeightEditor = 8;
+            stageHeightEditor = 16;
         }
 
         if (stageHeightEditor < 4)

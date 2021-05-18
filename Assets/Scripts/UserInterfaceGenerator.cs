@@ -48,14 +48,24 @@ public class UserInterfaceGenerator : MonoBehaviour
 
     public void UpdateEditorValues()
     {
-        if (Convert.ToInt32(stageWidthField.text) > 11)
+        if (Convert.ToInt32(stageWidthField.text) > 22)
         {
-            stageWidthField.text = Convert.ToString(11);
+            stageWidthField.text = Convert.ToString(22);
         }
 
-        if (Convert.ToInt32(stageHeightField.text) > 7)
+        if (Convert.ToInt32(stageHeightField.text) > 16)
         {
-            stageHeightField.text = Convert.ToString(7);
+            stageHeightField.text = Convert.ToString(16);
+        }
+
+        if (Convert.ToInt32(stageWidthField.text) < 7)
+        {
+            stageWidthField.text = Convert.ToString(7);
+        }
+
+        if (Convert.ToInt32(stageHeightField.text) < 4)
+        {
+            stageHeightField.text = Convert.ToString(4);
         }
 
         stageGenerator.GetComponent<StageGenerator>().stageWidthEditor = Convert.ToInt32(stageWidthField.text);
