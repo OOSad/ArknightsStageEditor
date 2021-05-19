@@ -1807,7 +1807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangedNormal: {fileID: 1537686966656762072, guid: 2545e797af9ed074d8d8112ef27f6561,
     type: 3}
-  lowerGround: {fileID: 3240979498133792823, guid: 970b7972716ea3c45bf22167cd1dbba5,
+  meleeNormal: {fileID: 3240979498133792823, guid: 970b7972716ea3c45bf22167cd1dbba5,
     type: 3}
   edgeGround: {fileID: 3240979498133792823, guid: b9e2e96ee68bfe444b03ba7cc91d488d,
     type: 3}
@@ -1828,7 +1828,7 @@ MonoBehaviour:
   rangedCamouflage: {fileID: 1537686966656762072, guid: 7ef02d6af8cfd9840ba1b6fdb89d82d0,
     type: 3}
   rangedNormalTiles: []
-  lowerGroundTiles: []
+  meleeNormalTiles: []
   edgeOfStageTiles: []
   bottomlessPitTiles: []
   enemySpawnTiles: []

@@ -27,8 +27,8 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
 
             switch (selectedBlock.name)
             {
-                case "LowerGround(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().lowerGroundTiles.Add(selectedBlock);
+                case "MeleeNormal(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().meleeNormalTiles.Add(selectedBlock);
                     break;
                 case "RangedNormal(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.Add(selectedBlock);
@@ -50,8 +50,8 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
 
             switch (thisTilesName)
             {
-                case "LowerGround(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().lowerGroundTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().lowerGroundTiles.IndexOf(this.gameObject));
+                case "MeleeNormal(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().meleeNormalTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().meleeNormalTiles.IndexOf(this.gameObject));
                     break;
                 case "RangedNormal(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.IndexOf(this.gameObject));

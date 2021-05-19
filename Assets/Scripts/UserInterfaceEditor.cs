@@ -12,9 +12,9 @@ public class UserInterfaceEditor : MonoBehaviour
     {
         switch (dropdown.options[dropdown.value].text)
         {
-            case ("Melee Tile"):
+            case ("Melee Normal"):
                 {
-                    QueueUpLowerGroundTile();
+                    QueueUpMeleeNormalTile();
                     break;
                 }
 
@@ -76,9 +76,9 @@ public class UserInterfaceEditor : MonoBehaviour
         }
     }
 
-    public void QueueUpLowerGroundTile()
+    public void QueueUpMeleeNormalTile()
     {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().lowerGround = true;
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeNormal = true;
     }
 
     public void QueueUpRangedNormalTile()

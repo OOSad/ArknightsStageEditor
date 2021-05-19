@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 806400909574959745}
   - component: {fileID: -3980020956454113026}
   m_Layer: 0
-  m_Name: HigherGround
+  m_Name: RangedNormal
   m_TagString: RangedNormal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

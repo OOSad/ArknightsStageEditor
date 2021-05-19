@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LowerGround : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class MeleeNormal : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Material tileHighlighted;
     private Material tileDefault;
@@ -18,7 +18,7 @@ public class LowerGround : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         this.GetComponent<Renderer>().material = tileHighlighted;
-        Debug.Log("LowerGround " + this.GetComponent<StageEditor>().tileCoordinates[0] + " " + this.GetComponent<StageEditor>().tileCoordinates[1]);
+        Debug.Log("Melee Normal " + this.GetComponent<StageEditor>().tileCoordinates[0] + " " + this.GetComponent<StageEditor>().tileCoordinates[1]);
     }
 
     public void OnPointerExit(PointerEventData eventData)

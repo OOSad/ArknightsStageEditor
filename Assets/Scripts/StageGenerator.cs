@@ -4,7 +4,7 @@ using UnityEngine;
 public class StageGenerator : MonoBehaviour
 {
     public GameObject rangedNormal;
-    public GameObject lowerGround;
+    public GameObject meleeNormal;
     public GameObject edgeGround;
     public GameObject enemySpawn;
     public GameObject playerSpawn;
@@ -16,7 +16,7 @@ public class StageGenerator : MonoBehaviour
     public GameObject rangedCamouflage;
 
     public List<GameObject> rangedNormalTiles = new List<GameObject>();
-    public List<GameObject> lowerGroundTiles = new List<GameObject>();
+    public List<GameObject> meleeNormalTiles = new List<GameObject>();
     public List<GameObject> edgeOfStageTiles = new List<GameObject>();
     public List<GameObject> bottomlessPitTiles = new List<GameObject>();
     public List<GameObject> enemySpawnTiles = new List<GameObject>();
@@ -152,22 +152,22 @@ public class StageGenerator : MonoBehaviour
     {
         for (int i = 0; i < stageWidth * stageHeight; i++)
         {
-            lowerGroundTiles.Add(Instantiate(lowerGround));
+            meleeNormalTiles.Add(Instantiate(meleeNormal));
         }
 
-        // Position lower ground tiles on stage.
-        // Give all of the lower ground tiles an x and y coordinate.
+        // Position melee tiles on stage.
+        // Give all of the melee tiles an x and y coordinate.
 
         int incrementedWidth = 0;
         int incrementedHeight = 0;
 
-        for (int i = 0; i < lowerGroundTiles.Count; i++)
+        for (int i = 0; i < meleeNormalTiles.Count; i++)
         {
-            lowerGroundTiles[i].transform.Translate(incrementedWidth, 0, incrementedHeight);
+            meleeNormalTiles[i].transform.Translate(incrementedWidth, 0, incrementedHeight);
             incrementedWidth++;
 
-            lowerGroundTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = incrementedWidth;
-            lowerGroundTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = incrementedHeight + 1;
+            meleeNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = incrementedWidth;
+            meleeNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = incrementedHeight + 1;
 
             if (incrementedWidth >= stageWidth)
             {
@@ -190,29 +190,29 @@ public class StageGenerator : MonoBehaviour
 
         int indexIncrement = 0;
 
-        for (int i = 0; i < lowerGroundTiles.Count; i++)
+        for (int i = 0; i < meleeNormalTiles.Count; i++)
         {
-            if (lowerGroundTiles[i].GetComponent<StageEditor>().tileCoordinates[1] == stageHeight)
+            if (meleeNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[1] == stageHeight)
             {
-                edgeOfStageTiles[indexIncrement].transform.position = new Vector3(lowerGroundTiles[i].transform.position.x, lowerGroundTiles[i].transform.position.y, lowerGroundTiles[i].transform.position.z + 1);
+                edgeOfStageTiles[indexIncrement].transform.position = new Vector3(meleeNormalTiles[i].transform.position.x, meleeNormalTiles[i].transform.position.y, meleeNormalTiles[i].transform.position.z + 1);
                 indexIncrement++;
             }
 
-            if (lowerGroundTiles[i].GetComponent<StageEditor>().tileCoordinates[0] == stageWidth)
+            if (meleeNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[0] == stageWidth)
             {
-                edgeOfStageTiles[indexIncrement].transform.position = new Vector3(lowerGroundTiles[i].transform.position.x + 1, lowerGroundTiles[i].transform.position.y, lowerGroundTiles[i].transform.position.z);
+                edgeOfStageTiles[indexIncrement].transform.position = new Vector3(meleeNormalTiles[i].transform.position.x + 1, meleeNormalTiles[i].transform.position.y, meleeNormalTiles[i].transform.position.z);
                 indexIncrement++;
             }
 
-            if (lowerGroundTiles[i].GetComponent<StageEditor>().tileCoordinates[1] == 1)
+            if (meleeNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[1] == 1)
             {
-                edgeOfStageTiles[indexIncrement].transform.position = new Vector3(lowerGroundTiles[i].transform.position.x, lowerGroundTiles[i].transform.position.y, lowerGroundTiles[i].transform.position.z - 1);
+                edgeOfStageTiles[indexIncrement].transform.position = new Vector3(meleeNormalTiles[i].transform.position.x, meleeNormalTiles[i].transform.position.y, meleeNormalTiles[i].transform.position.z - 1);
                 indexIncrement++;
             }
 
-            if (lowerGroundTiles[i].GetComponent<StageEditor>().tileCoordinates[0] == 1)
+            if (meleeNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[0] == 1)
             {
-                edgeOfStageTiles[indexIncrement].transform.position = new Vector3(lowerGroundTiles[i].transform.position.x - 1, lowerGroundTiles[i].transform.position.y, lowerGroundTiles[i].transform.position.z);
+                edgeOfStageTiles[indexIncrement].transform.position = new Vector3(meleeNormalTiles[i].transform.position.x - 1, meleeNormalTiles[i].transform.position.y, meleeNormalTiles[i].transform.position.z);
                 indexIncrement++;
             }
         }
@@ -224,7 +224,7 @@ public class StageGenerator : MonoBehaviour
         {
             rangedNormalTiles.Add(Instantiate(rangedNormal));
 
-            GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
             rangedNormalTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1, selectedTile.transform.position.z);
 
@@ -232,7 +232,7 @@ public class StageGenerator : MonoBehaviour
             rangedNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
 
-            lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
             Destroy(selectedTile);
         }
     }
@@ -247,15 +247,15 @@ public class StageGenerator : MonoBehaviour
 
         for (int i = 0; i < bottomlessPitTiles.Count; i++)
         {
-            GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
             bottomlessPitTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
 
             bottomlessPitTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
             bottomlessPitTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
-            Destroy(lowerGroundTiles[lowerGroundTiles.IndexOf(selectedTile)]);
-            lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+            Destroy(meleeNormalTiles[meleeNormalTiles.IndexOf(selectedTile)]);
+            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
         }
     }
 
@@ -282,14 +282,14 @@ public class StageGenerator : MonoBehaviour
 
             else
             {
-                GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+                GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
                 playerSpawnTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1.5f, selectedTile.transform.position.z);
 
                 playerSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
                 playerSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
-                lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+                meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
                 Destroy(selectedTile);
             }
@@ -319,14 +319,14 @@ public class StageGenerator : MonoBehaviour
 
             else
             {
-                GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+                GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
                 enemySpawnTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1.5f, selectedTile.transform.position.z);
 
                 enemySpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
                 enemySpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
-                lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+                meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
                 Destroy(selectedTile);
             }
@@ -356,14 +356,14 @@ public class StageGenerator : MonoBehaviour
 
             else
             {
-                GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+                GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
                 enemyDroneSpawnTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1f, selectedTile.transform.position.z);
 
                 enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
                 enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
-                lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+                meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
                 Destroy(selectedTile);
             }
@@ -376,14 +376,14 @@ public class StageGenerator : MonoBehaviour
         {
             lowerGroundRestrictedTiles.Add(Instantiate(lowerGroundRestricted));
 
-            GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
             lowerGroundRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
 
             lowerGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
             lowerGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
-            lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
             Destroy(selectedTile);
         }
@@ -395,14 +395,14 @@ public class StageGenerator : MonoBehaviour
         {
             higherGroundRestrictedTiles.Add(Instantiate(higherGroundRestricted));
 
-            GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
             higherGroundRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1f, selectedTile.transform.position.z);
 
             higherGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
             higherGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
-            lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
             Destroy(selectedTile);
         }
@@ -414,14 +414,14 @@ public class StageGenerator : MonoBehaviour
         {
             lowerGroundImpassableTiles.Add(Instantiate(lowerGroundImpassable));
 
-            GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
             lowerGroundImpassableTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
 
             lowerGroundImpassableTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
             lowerGroundImpassableTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
-            lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
             Destroy(selectedTile);
         }
@@ -433,7 +433,7 @@ public class StageGenerator : MonoBehaviour
         {
             rangedCamouflageTiles.Add(Instantiate(rangedCamouflage));
 
-            GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
+            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
             rangedCamouflageTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1, selectedTile.transform.position.z);
 
@@ -441,21 +441,21 @@ public class StageGenerator : MonoBehaviour
             rangedCamouflageTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
 
-            lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
+            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
             Destroy(selectedTile);
         }
     }
 
     private void DestroyStage()
     {
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("MeleeNormal").Length; i++)
+        {
+            Destroy(GameObject.FindGameObjectsWithTag("MeleeNormal")[i]);
+        }
+
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("RangedNormal").Length; i++)
         {
             Destroy(GameObject.FindGameObjectsWithTag("RangedNormal")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("LowerGround").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("LowerGround")[i]);
         }
 
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("EdgeGround").Length; i++)
@@ -503,8 +503,8 @@ public class StageGenerator : MonoBehaviour
             Destroy(GameObject.FindGameObjectsWithTag("RangedCamouflage")[i]);
         }
 
+        meleeNormalTiles.Clear();
         rangedNormalTiles.Clear();
-        lowerGroundTiles.Clear();
         edgeOfStageTiles.Clear();
         bottomlessPitTiles.Clear();
         enemySpawnTiles.Clear();
