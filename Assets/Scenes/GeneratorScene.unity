@@ -5453,7 +5453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2f703c03c7c2e418411041a8859bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowerGroundTile: {fileID: 3240979498133792823, guid: 970b7972716ea3c45bf22167cd1dbba5,
+  meleeNormalTile: {fileID: 3240979498133792823, guid: 970b7972716ea3c45bf22167cd1dbba5,
     type: 3}
   rangedNormalTile: {fileID: 1537686966656762072, guid: 2545e797af9ed074d8d8112ef27f6561,
     type: 3}
@@ -5474,7 +5474,7 @@ MonoBehaviour:
   rangedCamouflageTile: {fileID: 1537686966656762072, guid: 7ef02d6af8cfd9840ba1b6fdb89d82d0,
     type: 3}
   currentlySelectedBlock: {fileID: 0}
-  lowerGround: 0
+  meleeNormal: 0
   rangedNormal: 0
   playerSpawn: 0
   enemySpawn: 0
@@ -7570,7 +7570,7 @@ MonoBehaviour:
     m_Options:
     - m_Text: '-'
       m_Image: {fileID: 0}
-    - m_Text: Melee Tile
+    - m_Text: Melee Normal
       m_Image: {fileID: 0}
     - m_Text: Ranged Normal
       m_Image: {fileID: 0}
