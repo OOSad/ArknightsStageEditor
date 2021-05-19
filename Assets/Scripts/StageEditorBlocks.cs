@@ -5,7 +5,7 @@ using UnityEngine;
 public class StageEditorBlocks : MonoBehaviour
 {
     public GameObject lowerGroundTile;
-    public GameObject higherGroundTile;
+    public GameObject rangedNormalTile;
     public GameObject playerSpawnTile;
     public GameObject enemySpawnTile;
     public GameObject enemyDroneSpawnTile;
@@ -19,7 +19,7 @@ public class StageEditorBlocks : MonoBehaviour
     public GameObject currentlySelectedBlock;
 
     public bool lowerGround;
-    public bool higherGround;
+    public bool rangedNormal;
     public bool playerSpawn;
     public bool enemySpawn;
     public bool enemyDroneSpawn;
@@ -37,10 +37,10 @@ public class StageEditorBlocks : MonoBehaviour
             lowerGround = false;
         }
 
-        if (higherGround)
+        if (rangedNormal)
         {
-            currentlySelectedBlock = higherGroundTile;
-            higherGround = false;
+            currentlySelectedBlock = rangedNormalTile;
+            rangedNormal = false;
         }
 
         if (playerSpawn)

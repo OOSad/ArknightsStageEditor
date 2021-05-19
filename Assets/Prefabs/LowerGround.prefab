@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileHighlighted: {fileID: 2100000, guid: a9d3657d8441547419590f52caddf622, type: 2}
-  coordinates: 0000000000000000
   edgeTile: 0
 --- !u!114 &682764759034606897
 MonoBehaviour:
@@ -127,3 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8a6d5201d593345975eb43e89956de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageEditorBlocks: {fileID: 0}
+  stageGenerator: {fileID: 0}
+  tileCoordinates: 0000000000000000
+  thisTilesName: 

@@ -30,8 +30,8 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "LowerGround(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().lowerGroundTiles.Add(selectedBlock);
                     break;
-                case "HigherGround(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().higherGroundTiles.Add(selectedBlock);
+                case "RangedNormal(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.Add(selectedBlock);
                     break;
                 case "BottomlessPit(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().bottomlessPitTiles.Add(selectedBlock);
@@ -53,8 +53,8 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "LowerGround(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().lowerGroundTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().lowerGroundTiles.IndexOf(this.gameObject));
                     break;
-                case "HigherGround(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().higherGroundTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().higherGroundTiles.IndexOf(this.gameObject));
+                case "RangedNormal(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.IndexOf(this.gameObject));
                     break;
                 case "BottomlessPit(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().bottomlessPitTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().bottomlessPitTiles.IndexOf(this.gameObject));

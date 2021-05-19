@@ -18,9 +18,9 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
-            case ("Ranged Tile"):
+            case ("Ranged Normal"):
                 {
-                    QueueUpHigherGroundTile();
+                    QueueUpRangedNormalTile();
                     break;
                 }
 
@@ -81,9 +81,9 @@ public class UserInterfaceEditor : MonoBehaviour
         GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().lowerGround = true;
     }
 
-    public void QueueUpHigherGroundTile()
+    public void QueueUpRangedNormalTile()
     {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().higherGround = true;
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedNormal = true;
     }
 
     public void QueueUpBottomlessPitTile()

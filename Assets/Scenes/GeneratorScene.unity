@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e9a7466d73c4f42a126fe41f503ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  higherGround: {fileID: 1537686966656762072, guid: 2545e797af9ed074d8d8112ef27f6561,
+  rangedNormal: {fileID: 1537686966656762072, guid: 2545e797af9ed074d8d8112ef27f6561,
     type: 3}
   lowerGround: {fileID: 3240979498133792823, guid: 970b7972716ea3c45bf22167cd1dbba5,
     type: 3}
@@ -1827,9 +1827,9 @@ MonoBehaviour:
     type: 3}
   rangedCamouflage: {fileID: 1537686966656762072, guid: 7ef02d6af8cfd9840ba1b6fdb89d82d0,
     type: 3}
+  rangedNormalTiles: []
   lowerGroundTiles: []
   edgeOfStageTiles: []
-  higherGroundTiles: []
   bottomlessPitTiles: []
   enemySpawnTiles: []
   playerSpawnTiles: []
@@ -1840,7 +1840,7 @@ MonoBehaviour:
   rangedCamouflageTiles: []
   stageWidthEditor: 0
   stageHeightEditor: 0
-  numberOfHigherGroundTilesEditor: 0
+  numberOfRangedNormalTilesEditor: 0
   numberOfBottomlessPitsEditor: 0
   numberOfEnemySpawnsEditor: 0
   numberOfPlayerSpawnsEditor: 0
@@ -1885,7 +1885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &480985762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5455,7 +5455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lowerGroundTile: {fileID: 3240979498133792823, guid: 970b7972716ea3c45bf22167cd1dbba5,
     type: 3}
-  higherGroundTile: {fileID: 1537686966656762072, guid: 2545e797af9ed074d8d8112ef27f6561,
+  rangedNormalTile: {fileID: 1537686966656762072, guid: 2545e797af9ed074d8d8112ef27f6561,
     type: 3}
   playerSpawnTile: {fileID: 3644515601715152187, guid: c6944936c693a4547ac4ba09c02ea612,
     type: 3}
@@ -5475,7 +5475,7 @@ MonoBehaviour:
     type: 3}
   currentlySelectedBlock: {fileID: 0}
   lowerGround: 0
-  higherGround: 0
+  rangedNormal: 0
   playerSpawn: 0
   enemySpawn: 0
   enemyDroneSpawn: 0
@@ -5997,7 +5997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1735400024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7134,7 +7134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 14.3, y: -0.5}
+  m_AnchoredPosition: {x: 14.299999, y: -0.5}
   m_SizeDelta: {x: -15.000002, y: -3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2014892646
@@ -7572,7 +7572,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Melee Tile
       m_Image: {fileID: 0}
-    - m_Text: Ranged Tile
+    - m_Text: Ranged Normal
       m_Image: {fileID: 0}
     - m_Text: Bottomless Pit
       m_Image: {fileID: 0}

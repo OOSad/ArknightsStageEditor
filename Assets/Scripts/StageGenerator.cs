@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class StageGenerator : MonoBehaviour
 {
-    public GameObject higherGround;
+    public GameObject rangedNormal;
     public GameObject lowerGround;
     public GameObject edgeGround;
     public GameObject enemySpawn;
@@ -15,9 +15,9 @@ public class StageGenerator : MonoBehaviour
     public GameObject enemyDroneSpawn;
     public GameObject rangedCamouflage;
 
+    public List<GameObject> rangedNormalTiles = new List<GameObject>();
     public List<GameObject> lowerGroundTiles = new List<GameObject>();
     public List<GameObject> edgeOfStageTiles = new List<GameObject>();
-    public List<GameObject> higherGroundTiles = new List<GameObject>();
     public List<GameObject> bottomlessPitTiles = new List<GameObject>();
     public List<GameObject> enemySpawnTiles = new List<GameObject>();
     public List<GameObject> playerSpawnTiles = new List<GameObject>();
@@ -30,7 +30,7 @@ public class StageGenerator : MonoBehaviour
 
     public int stageWidthEditor;
     public int stageHeightEditor;
-    public int numberOfHigherGroundTilesEditor;
+    public int numberOfRangedNormalTilesEditor;
     public int numberOfBottomlessPitsEditor;
     public int numberOfEnemySpawnsEditor;
     public int numberOfPlayerSpawnsEditor;
@@ -42,7 +42,7 @@ public class StageGenerator : MonoBehaviour
 
     private int stageWidth = 10;
     private int stageHeight = 5;
-    private int numberOfHigherGroundTiles = 15;
+    private int numberOfRangedNormalTiles = 15;
     private int numberOfBottomlessPits = 2;
     private int numberOfEnemySpawns = 1;
     private int numberOfPlayerSpawns = 1;
@@ -63,7 +63,7 @@ public class StageGenerator : MonoBehaviour
         CreateLowerGround();
         CreateEdgeTiles();
 
-        PlaceHigherGroundTilesRandomly();
+        PlaceRangedNormalTilesRandomly();
 
         PlacePlayerSpawnsRandomly();
         PlaceEnemySpawnsRandomly();
@@ -84,9 +84,9 @@ public class StageGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (numberOfHigherGroundTilesEditor < 0)
+        if (numberOfRangedNormalTilesEditor < 0)
         {
-            numberOfHigherGroundTilesEditor = 0;
+            numberOfRangedNormalTilesEditor = 0;
         }
 
         if (stageWidthEditor > 22)
@@ -111,7 +111,7 @@ public class StageGenerator : MonoBehaviour
 
         if (stageWidth != stageWidthEditor ||
             stageHeight != stageHeightEditor ||
-            numberOfHigherGroundTiles != numberOfHigherGroundTilesEditor ||
+            numberOfRangedNormalTiles != numberOfRangedNormalTilesEditor ||
             numberOfBottomlessPits != numberOfBottomlessPitsEditor ||
             numberOfEnemySpawns != numberOfEnemySpawnsEditor ||
             numberOfEnemyDroneSpawns != numberOfEnemyDroneSpawnsEditor ||
@@ -129,7 +129,7 @@ public class StageGenerator : MonoBehaviour
             CreateLowerGround();
             CreateEdgeTiles();
 
-            PlaceHigherGroundTilesRandomly();
+            PlaceRangedNormalTilesRandomly();
 
             PlacePlayerSpawnsRandomly();
             PlaceEnemySpawnsRandomly();
@@ -218,18 +218,18 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
-    private void PlaceHigherGroundTilesRandomly()
+    private void PlaceRangedNormalTilesRandomly()
     {
-        for (int i = 0; i < numberOfHigherGroundTiles; i++)
+        for (int i = 0; i < numberOfRangedNormalTiles; i++)
         {
-            higherGroundTiles.Add(Instantiate(higherGround));
+            rangedNormalTiles.Add(Instantiate(rangedNormal));
 
             GameObject selectedTile = lowerGroundTiles[Random.Range(0, lowerGroundTiles.Count)];
 
-            higherGroundTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1, selectedTile.transform.position.z);
+            rangedNormalTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1, selectedTile.transform.position.z);
 
-            higherGroundTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            higherGroundTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
+            rangedNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
+            rangedNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
 
             lowerGroundTiles.RemoveAt(lowerGroundTiles.IndexOf(selectedTile));
@@ -448,9 +448,9 @@ public class StageGenerator : MonoBehaviour
 
     private void DestroyStage()
     {
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("HigherGround").Length; i++)
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("RangedNormal").Length; i++)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("HigherGround")[i]);
+            Destroy(GameObject.FindGameObjectsWithTag("RangedNormal")[i]);
         }
 
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("LowerGround").Length; i++)
@@ -503,7 +503,7 @@ public class StageGenerator : MonoBehaviour
             Destroy(GameObject.FindGameObjectsWithTag("RangedCamouflage")[i]);
         }
 
-        higherGroundTiles.Clear();
+        rangedNormalTiles.Clear();
         lowerGroundTiles.Clear();
         edgeOfStageTiles.Clear();
         bottomlessPitTiles.Clear();
@@ -520,7 +520,7 @@ public class StageGenerator : MonoBehaviour
     {
         stageWidthEditor = stageWidth;
         stageHeightEditor = stageHeight;
-        numberOfHigherGroundTilesEditor = numberOfHigherGroundTiles;
+        numberOfRangedNormalTilesEditor = numberOfRangedNormalTiles;
         numberOfBottomlessPitsEditor = numberOfBottomlessPits;
         numberOfEnemySpawnsEditor = numberOfEnemySpawns;
         numberOfEnemyDroneSpawnsEditor = numberOfEnemyDroneSpawns;
@@ -535,7 +535,7 @@ public class StageGenerator : MonoBehaviour
     {
         stageWidth = stageWidthEditor;
         stageHeight = stageHeightEditor;
-        numberOfHigherGroundTiles = numberOfHigherGroundTilesEditor;
+        numberOfRangedNormalTiles = numberOfRangedNormalTilesEditor;
         numberOfBottomlessPits = numberOfBottomlessPitsEditor;
         numberOfEnemySpawns = numberOfEnemySpawnsEditor;
         numberOfEnemyDroneSpawns = numberOfEnemyDroneSpawnsEditor;

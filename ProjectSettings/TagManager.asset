@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - HigherGround
   - LowerGround
   - EnemySpawn
   - PlayerSpawn
@@ -20,6 +19,7 @@ TagManager:
   - LowerGroundImpassable
   - EnemyDroneSpawn
   - RangedCamouflage
+  - RangedNormal
   layers:
   - Default
   - TransparentFX
