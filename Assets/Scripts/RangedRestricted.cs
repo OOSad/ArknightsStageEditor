@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HigherGroundRestricted : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class RangedRestricted : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Material tileHighlighted;
     private Material tileDefault;
@@ -16,7 +16,7 @@ public class HigherGroundRestricted : MonoBehaviour, IPointerEnterHandler, IPoin
     public void OnPointerEnter(PointerEventData eventData)
     {
         this.GetComponent<Renderer>().material = tileHighlighted;
-        Debug.Log("HigherGroundRestricted " + this.GetComponent<StageEditor>().tileCoordinates[0] + " " + this.GetComponent<StageEditor>().tileCoordinates[1]);
+        Debug.Log("Ranged Restricted " + this.GetComponent<StageEditor>().tileCoordinates[0] + " " + this.GetComponent<StageEditor>().tileCoordinates[1]);
     }
 
     public void OnPointerExit(PointerEventData eventData)

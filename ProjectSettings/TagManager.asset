@@ -13,13 +13,13 @@ TagManager:
   - StageEditorBlocks
   - StageDatabase
   - TileCheckbox
-  - LowerGroundRestricted
-  - HigherGroundRestricted
-  - LowerGroundImpassable
   - EnemyDroneSpawn
   - RangedCamouflage
   - RangedNormal
   - MeleeNormal
+  - RangedRestricted
+  - MeleeRestricted
+  - MeleeImpassable
   layers:
   - Default
   - TransparentFX

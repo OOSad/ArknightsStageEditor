@@ -42,6 +42,18 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "PlayerSpawn(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.Add(selectedBlock);
                     break;
+                case "MeleeRestricted(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().meleeRestrictedTiles.Add(selectedBlock);
+                    break;
+                case "RangedRestricted(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedRestrictedTiles.Add(selectedBlock);
+                    break;
+                case "MeleeImpassable(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().meleeImpassableTiles.Add(selectedBlock);
+                    break;
+                case "RangedCamouflage(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.Add(selectedBlock);
+                    break;
 
                 default: break;
             }
@@ -64,6 +76,18 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                     break;
                 case "PlayerSpawn(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.IndexOf(this.gameObject));
+                    break;
+                case "MeleeRestricted(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().meleeRestrictedTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().meleeRestrictedTiles.IndexOf(this.gameObject));
+                    break;
+                case "RangedRestricted(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedRestrictedTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedRestrictedTiles.IndexOf(this.gameObject));
+                    break;
+                case "MeleeImpassable(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().meleeImpassableTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().meleeImpassableTiles.IndexOf(this.gameObject));
+                    break;
+                case "RangedCamouflage(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.IndexOf(this.gameObject));
                     break;
 
                 default: break;

@@ -9,9 +9,9 @@ public class StageGenerator : MonoBehaviour
     public GameObject enemySpawn;
     public GameObject playerSpawn;
     public GameObject bottomlessPit;
-    public GameObject lowerGroundRestricted;
-    public GameObject higherGroundRestricted;
-    public GameObject lowerGroundImpassable;
+    public GameObject meleeRestricted;
+    public GameObject rangedRestricted;
+    public GameObject meleeImpassable;
     public GameObject enemyDroneSpawn;
     public GameObject rangedCamouflage;
 
@@ -21,9 +21,9 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> bottomlessPitTiles = new List<GameObject>();
     public List<GameObject> enemySpawnTiles = new List<GameObject>();
     public List<GameObject> playerSpawnTiles = new List<GameObject>();
-    public List<GameObject> lowerGroundRestrictedTiles = new List<GameObject>();
-    public List<GameObject> higherGroundRestrictedTiles = new List<GameObject>();
-    public List<GameObject> lowerGroundImpassableTiles = new List<GameObject>();
+    public List<GameObject> meleeRestrictedTiles = new List<GameObject>();
+    public List<GameObject> rangedRestrictedTiles = new List<GameObject>();
+    public List<GameObject> meleeImpassableTiles = new List<GameObject>();
     public List<GameObject> enemyDroneSpawnTiles = new List<GameObject>();
     public List<GameObject> rangedCamouflageTiles = new List<GameObject>();
 
@@ -34,9 +34,9 @@ public class StageGenerator : MonoBehaviour
     public int numberOfBottomlessPitsEditor;
     public int numberOfEnemySpawnsEditor;
     public int numberOfPlayerSpawnsEditor;
-    public int numberOfLowerGroundRestrictedEditor;
-    public int numberOfHigherGroundRestrictedEditor;
-    public int numberOfLowerGroundImpassableEditor;
+    public int numberOfMeleeRestrictedEditor;
+    public int numberOfRangedRestrictedEditor;
+    public int numberOfMeleeImpassableEditor;
     public int numberOfEnemyDroneSpawnsEditor;
     public int numberOfRangedCamouflageTilesEditor;
 
@@ -46,9 +46,9 @@ public class StageGenerator : MonoBehaviour
     private int numberOfBottomlessPits = 2;
     private int numberOfEnemySpawns = 1;
     private int numberOfPlayerSpawns = 1;
-    private int numberOfLowerGroundRestricted = 1;
-    private int numberOfHigherGroundRestricted = 1;
-    private int numberOfLowerGroundImpassable = 1;
+    private int numberOfMeleeRestrictedTiles = 1;
+    private int numberOfRangedRestrictedTiles = 1;
+    private int numberOfMeleeImpassableTiles = 1;
     private int numberOfEnemyDroneSpawns = 1;
     private int numberOfRangedCamouflageTiles = 1;
 
@@ -71,10 +71,10 @@ public class StageGenerator : MonoBehaviour
 
         PlaceBottomlessPitsRandomly();
 
-        PlaceLowerGroundRestrictedRandomly();
-        PlaceHigherGroundRestrictedRandomly();
+        PlaceMeleeRestrictedTilesRandomly();
+        PlaceRangedRestrictedTilesRandomly();
 
-        PlaceLowerGroundImpassableRandomly();
+        PlaceMeleeImpassableTilesRandomly();
 
         PlaceRangedCamouflageTilesRandomly();
 
@@ -116,9 +116,9 @@ public class StageGenerator : MonoBehaviour
             numberOfEnemySpawns != numberOfEnemySpawnsEditor ||
             numberOfEnemyDroneSpawns != numberOfEnemyDroneSpawnsEditor ||
             numberOfPlayerSpawns != numberOfPlayerSpawnsEditor ||
-            numberOfLowerGroundRestricted != numberOfLowerGroundRestrictedEditor ||
-            numberOfHigherGroundRestricted != numberOfHigherGroundRestrictedEditor ||
-            numberOfLowerGroundImpassable != numberOfLowerGroundImpassableEditor ||
+            numberOfMeleeRestrictedTiles != numberOfMeleeRestrictedEditor ||
+            numberOfRangedRestrictedTiles != numberOfRangedRestrictedEditor ||
+            numberOfMeleeImpassableTiles != numberOfMeleeImpassableEditor ||
             numberOfRangedCamouflageTiles != numberOfRangedCamouflageTilesEditor ||
             regenerateStage == true)
         {
@@ -137,10 +137,10 @@ public class StageGenerator : MonoBehaviour
 
             PlaceBottomlessPitsRandomly();
 
-            PlaceLowerGroundRestrictedRandomly();
-            PlaceHigherGroundRestrictedRandomly();
+            PlaceMeleeRestrictedTilesRandomly();
+            PlaceRangedRestrictedTilesRandomly();
 
-            PlaceLowerGroundImpassableRandomly();
+            PlaceMeleeImpassableTilesRandomly();
 
             PlaceRangedCamouflageTilesRandomly();
         }
@@ -370,18 +370,18 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
-    public void PlaceLowerGroundRestrictedRandomly()
+    public void PlaceMeleeRestrictedTilesRandomly()
     {
-        for (int i = 0; i < numberOfLowerGroundRestricted; i++)
+        for (int i = 0; i < numberOfMeleeRestrictedTiles; i++)
         {
-            lowerGroundRestrictedTiles.Add(Instantiate(lowerGroundRestricted));
+            meleeRestrictedTiles.Add(Instantiate(meleeRestricted));
 
             GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
-            lowerGroundRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
+            meleeRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
 
-            lowerGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            lowerGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
+            meleeRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
+            meleeRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
             meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
@@ -389,18 +389,18 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
-    public void PlaceHigherGroundRestrictedRandomly()
+    public void PlaceRangedRestrictedTilesRandomly()
     {
-        for (int i = 0; i < numberOfHigherGroundRestricted; i++)
+        for (int i = 0; i < numberOfRangedRestrictedTiles; i++)
         {
-            higherGroundRestrictedTiles.Add(Instantiate(higherGroundRestricted));
+            rangedRestrictedTiles.Add(Instantiate(rangedRestricted));
 
             GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
-            higherGroundRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1f, selectedTile.transform.position.z);
+            rangedRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1f, selectedTile.transform.position.z);
 
-            higherGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            higherGroundRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
+            rangedRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
+            rangedRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
             meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
@@ -408,18 +408,18 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
-    public void PlaceLowerGroundImpassableRandomly()
+    public void PlaceMeleeImpassableTilesRandomly()
     {
-        for (int i = 0; i < numberOfLowerGroundImpassable; i++)
+        for (int i = 0; i < numberOfMeleeImpassableTiles; i++)
         {
-            lowerGroundImpassableTiles.Add(Instantiate(lowerGroundImpassable));
+            meleeImpassableTiles.Add(Instantiate(meleeImpassable));
 
             GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
-            lowerGroundImpassableTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
+            meleeImpassableTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
 
-            lowerGroundImpassableTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            lowerGroundImpassableTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
+            meleeImpassableTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
+            meleeImpassableTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
             meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
@@ -483,19 +483,19 @@ public class StageGenerator : MonoBehaviour
             Destroy(GameObject.FindGameObjectsWithTag("PlayerSpawn")[i]);
         }
 
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("LowerGroundRestricted").Length; i++)
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("MeleeRestricted").Length; i++)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("LowerGroundRestricted")[i]);
+            Destroy(GameObject.FindGameObjectsWithTag("MeleeRestricted")[i]);
         }
 
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("HigherGroundRestricted").Length; i++)
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("RangedRestricted").Length; i++)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("HigherGroundRestricted")[i]);
+            Destroy(GameObject.FindGameObjectsWithTag("RangedRestricted")[i]);
         }
 
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("LowerGroundImpassable").Length; i++)
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("MeleeImpassable").Length; i++)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("LowerGroundImpassable")[i]);
+            Destroy(GameObject.FindGameObjectsWithTag("MeleeImpassable")[i]);
         }
 
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("RangedCamouflage").Length; i++)
@@ -510,9 +510,9 @@ public class StageGenerator : MonoBehaviour
         enemySpawnTiles.Clear();
         enemyDroneSpawnTiles.Clear();
         playerSpawnTiles.Clear();
-        lowerGroundRestrictedTiles.Clear();
-        higherGroundRestrictedTiles.Clear();
-        lowerGroundImpassableTiles.Clear();
+        meleeRestrictedTiles.Clear();
+        rangedRestrictedTiles.Clear();
+        meleeImpassableTiles.Clear();
         rangedCamouflageTiles.Clear();
     }
 
@@ -525,9 +525,9 @@ public class StageGenerator : MonoBehaviour
         numberOfEnemySpawnsEditor = numberOfEnemySpawns;
         numberOfEnemyDroneSpawnsEditor = numberOfEnemyDroneSpawns;
         numberOfPlayerSpawnsEditor = numberOfPlayerSpawns;
-        numberOfLowerGroundRestrictedEditor = numberOfLowerGroundRestricted;
-        numberOfHigherGroundRestrictedEditor = numberOfHigherGroundRestricted;
-        numberOfLowerGroundImpassableEditor = numberOfLowerGroundImpassable;
+        numberOfMeleeRestrictedEditor = numberOfMeleeRestrictedTiles;
+        numberOfRangedRestrictedEditor = numberOfRangedRestrictedTiles;
+        numberOfMeleeImpassableEditor = numberOfMeleeImpassableTiles;
         numberOfRangedCamouflageTilesEditor = numberOfRangedCamouflageTiles;
     }
 
@@ -540,9 +540,9 @@ public class StageGenerator : MonoBehaviour
         numberOfEnemySpawns = numberOfEnemySpawnsEditor;
         numberOfEnemyDroneSpawns = numberOfEnemyDroneSpawnsEditor;
         numberOfPlayerSpawns = numberOfPlayerSpawnsEditor;
-        numberOfLowerGroundRestricted = numberOfLowerGroundRestrictedEditor;
-        numberOfHigherGroundRestricted = numberOfHigherGroundRestrictedEditor;
-        numberOfLowerGroundImpassable = numberOfLowerGroundImpassableEditor;
+        numberOfMeleeRestrictedTiles = numberOfMeleeRestrictedEditor;
+        numberOfRangedRestrictedTiles = numberOfRangedRestrictedEditor;
+        numberOfMeleeImpassableTiles = numberOfMeleeImpassableEditor;
         numberOfRangedCamouflageTiles = numberOfRangedCamouflageTilesEditor;
 
         regenerateStage = false;

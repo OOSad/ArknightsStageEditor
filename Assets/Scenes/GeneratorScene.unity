@@ -1817,11 +1817,11 @@ MonoBehaviour:
     type: 3}
   bottomlessPit: {fileID: 1537686966656762072, guid: 8b9de9fda3b75af438e3de55a486dfd7,
     type: 3}
-  lowerGroundRestricted: {fileID: 3240979498133792823, guid: c883b89c4796d2a48b2f7e6da7635858,
+  meleeRestricted: {fileID: 3240979498133792823, guid: c883b89c4796d2a48b2f7e6da7635858,
     type: 3}
-  higherGroundRestricted: {fileID: 1537686966656762072, guid: e77935dd9b371f747a75394663268b22,
+  rangedRestricted: {fileID: 1537686966656762072, guid: e77935dd9b371f747a75394663268b22,
     type: 3}
-  lowerGroundImpassable: {fileID: 3240979498133792823, guid: 3c9055795c7bebc479932eb1889f332f,
+  meleeImpassable: {fileID: 3240979498133792823, guid: 3c9055795c7bebc479932eb1889f332f,
     type: 3}
   enemyDroneSpawn: {fileID: 1913746677811958141, guid: 2d7467b63f50a8e48a1bc130e25e237b,
     type: 3}
@@ -1833,9 +1833,9 @@ MonoBehaviour:
   bottomlessPitTiles: []
   enemySpawnTiles: []
   playerSpawnTiles: []
-  lowerGroundRestrictedTiles: []
-  higherGroundRestrictedTiles: []
-  lowerGroundImpassableTiles: []
+  meleeRestrictedTiles: []
+  rangedRestrictedTiles: []
+  meleeImpassableTiles: []
   enemyDroneSpawnTiles: []
   rangedCamouflageTiles: []
   stageWidthEditor: 0
@@ -1844,9 +1844,9 @@ MonoBehaviour:
   numberOfBottomlessPitsEditor: 0
   numberOfEnemySpawnsEditor: 0
   numberOfPlayerSpawnsEditor: 0
-  numberOfLowerGroundRestrictedEditor: 0
-  numberOfHigherGroundRestrictedEditor: 0
-  numberOfLowerGroundImpassableEditor: 0
+  numberOfMeleeRestrictedEditor: 0
+  numberOfRangedRestrictedEditor: 0
+  numberOfMeleeImpassableEditor: 0
   numberOfEnemyDroneSpawnsEditor: 0
   numberOfRangedCamouflageTilesEditor: 0
   playerSpawnOnOutside: 0
@@ -5465,11 +5465,11 @@ MonoBehaviour:
     type: 3}
   bottomlessPitTile: {fileID: 1537686966656762072, guid: 8b9de9fda3b75af438e3de55a486dfd7,
     type: 3}
-  lowerGroundRestrictedTile: {fileID: 3240979498133792823, guid: c883b89c4796d2a48b2f7e6da7635858,
+  meleeRestrictedTile: {fileID: 3240979498133792823, guid: c883b89c4796d2a48b2f7e6da7635858,
     type: 3}
-  higherGroundRestrictedTile: {fileID: 1537686966656762072, guid: e77935dd9b371f747a75394663268b22,
+  rangedRestrictedTile: {fileID: 1537686966656762072, guid: e77935dd9b371f747a75394663268b22,
     type: 3}
-  lowerGroundImpassableTile: {fileID: 3240979498133792823, guid: 3c9055795c7bebc479932eb1889f332f,
+  meleeImpassableTile: {fileID: 3240979498133792823, guid: 3c9055795c7bebc479932eb1889f332f,
     type: 3}
   rangedCamouflageTile: {fileID: 1537686966656762072, guid: 7ef02d6af8cfd9840ba1b6fdb89d82d0,
     type: 3}
@@ -5480,9 +5480,9 @@ MonoBehaviour:
   enemySpawn: 0
   enemyDroneSpawn: 0
   bottomlessPit: 0
-  lowerRestricted: 0
-  higherRestricted: 0
-  lowerImpassable: 0
+  meleeRestricted: 0
+  rangedRestricted: 0
+  meleeImpassable: 0
   rangedCamouflage: 0
 --- !u!4 &1702227122
 Transform:

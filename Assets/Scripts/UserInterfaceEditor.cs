@@ -42,27 +42,27 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Drone Spawn"):
+                {
+                    QueueUpEnemyDroneSpawnTile();
+                    break;
+                }
+
             case ("Melee Restricted"):
                 {
-                    QueueUpLowerGroundRestrictedTile();
+                    QueueUpMeleeRestrictedTile();
                     break;
                 }
 
             case ("Ranged Restricted"):
                 {
-                    QueueUpHigherGroundRestrictedTile();
+                    QueueUpRangedRestrictedTile();
                     break;
                 }
 
             case ("Melee Impassable"):
                 {
-                    QueueUpLowerGroundImpassableTile();
-                    break;
-                }
-
-            case ("Drone Spawn"):
-                {
-                    QueueUpEnemyDroneSpawnTile();
+                    QueueUpMeleeImpassableTile();
                     break;
                 }
 
@@ -106,19 +106,19 @@ public class UserInterfaceEditor : MonoBehaviour
         GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemyDroneSpawn = true;
     }
 
-    public void QueueUpLowerGroundRestrictedTile()
+    public void QueueUpMeleeRestrictedTile()
     {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().lowerRestricted = true;
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeRestricted = true;
     }
 
-    public void QueueUpHigherGroundRestrictedTile()
+    public void QueueUpRangedRestrictedTile()
     {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().higherRestricted = true;
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedRestricted = true;
     }
 
-    public void QueueUpLowerGroundImpassableTile()
+    public void QueueUpMeleeImpassableTile()
     {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().lowerImpassable = true;
+        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeImpassable = true;
     }
 
     public void QueueUpRangedCamouflageTile()
