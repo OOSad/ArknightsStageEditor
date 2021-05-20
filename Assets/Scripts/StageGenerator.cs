@@ -63,20 +63,17 @@ public class StageGenerator : MonoBehaviour
         CreateLowerGround();
         CreateEdgeTiles();
 
-        PlaceRangedNormalTilesRandomly();
+        PlaceThisTileAroundRandomly(rangedNormal, numberOfRangedNormalTiles, rangedNormalTiles);
 
         PlacePlayerSpawnsRandomly();
         PlaceEnemySpawnsRandomly();
         PlaceEnemyDroneSpawnsRandomly();
 
-        PlaceBottomlessPitsRandomly();
-
-        PlaceMeleeRestrictedTilesRandomly();
-        PlaceRangedRestrictedTilesRandomly();
-
-        PlaceMeleeImpassableTilesRandomly();
-
-        PlaceRangedCamouflageTilesRandomly();
+        PlaceThisTileAroundRandomly(bottomlessPit, numberOfBottomlessPits, bottomlessPitTiles);
+        PlaceThisTileAroundRandomly(meleeRestricted, numberOfMeleeRestrictedTiles, meleeRestrictedTiles);
+        PlaceThisTileAroundRandomly(rangedRestricted, numberOfRangedRestrictedTiles, rangedRestrictedTiles);
+        PlaceThisTileAroundRandomly(meleeImpassable, numberOfMeleeImpassableTiles, meleeImpassableTiles);
+        PlaceThisTileAroundRandomly(rangedCamouflage, numberOfRangedCamouflageTiles, rangedCamouflageTiles);
 
         UpdateEditorValues();
     }
@@ -129,20 +126,17 @@ public class StageGenerator : MonoBehaviour
             CreateLowerGround();
             CreateEdgeTiles();
 
-            PlaceRangedNormalTilesRandomly();
+            PlaceThisTileAroundRandomly(rangedNormal, numberOfRangedNormalTiles, rangedNormalTiles);
 
             PlacePlayerSpawnsRandomly();
             PlaceEnemySpawnsRandomly();
             PlaceEnemyDroneSpawnsRandomly();
 
-            PlaceBottomlessPitsRandomly();
-
-            PlaceMeleeRestrictedTilesRandomly();
-            PlaceRangedRestrictedTilesRandomly();
-
-            PlaceMeleeImpassableTilesRandomly();
-
-            PlaceRangedCamouflageTilesRandomly();
+            PlaceThisTileAroundRandomly(bottomlessPit, numberOfBottomlessPits, bottomlessPitTiles);
+            PlaceThisTileAroundRandomly(meleeRestricted, numberOfMeleeRestrictedTiles, meleeRestrictedTiles);
+            PlaceThisTileAroundRandomly(rangedRestricted, numberOfRangedRestrictedTiles, rangedRestrictedTiles);
+            PlaceThisTileAroundRandomly(meleeImpassable, numberOfMeleeImpassableTiles, meleeImpassableTiles);
+            PlaceThisTileAroundRandomly(rangedCamouflage, numberOfRangedCamouflageTiles, rangedCamouflageTiles);
         }
     }
 
@@ -154,9 +148,6 @@ public class StageGenerator : MonoBehaviour
         {
             meleeNormalTiles.Add(Instantiate(meleeNormal));
         }
-
-        // Position melee tiles on stage.
-        // Give all of the melee tiles an x and y coordinate.
 
         int incrementedWidth = 0;
         int incrementedHeight = 0;
@@ -186,7 +177,6 @@ public class StageGenerator : MonoBehaviour
             edgeOfStageTiles.Add(Instantiate(edgeGround));
         }
 
-        // Find the edges of the stage, and place edge blocks there.
 
         int indexIncrement = 0;
 
@@ -218,44 +208,20 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
-    private void PlaceRangedNormalTilesRandomly()
+    private void PlaceThisTileAroundRandomly(GameObject tile, int numberOfTilesYouWantToPlace, List<GameObject> listToAddTilesInto)
     {
-        for (int i = 0; i < numberOfRangedNormalTiles; i++)
+        for (int i = 0; i < numberOfTilesYouWantToPlace; i++)
         {
-            rangedNormalTiles.Add(Instantiate(rangedNormal));
+            listToAddTilesInto.Add(Instantiate(tile));
 
-            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
+            GameObject randomMeleeNormalTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
-            rangedNormalTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1, selectedTile.transform.position.z);
+            listToAddTilesInto[i].transform.position = new Vector3(randomMeleeNormalTile.transform.position.x, tile.transform.position.y, randomMeleeNormalTile.transform.position.z);
+            listToAddTilesInto[i].GetComponent<StageEditor>().tileCoordinates[0] = randomMeleeNormalTile.GetComponent<StageEditor>().tileCoordinates[0];
+            listToAddTilesInto[i].GetComponent<StageEditor>().tileCoordinates[1] = randomMeleeNormalTile.GetComponent<StageEditor>().tileCoordinates[1];
 
-            rangedNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            rangedNormalTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-
-            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
-            Destroy(selectedTile);
-        }
-    }
-
-    private void PlaceBottomlessPitsRandomly()
-    {
-        for (int i = 0; i < numberOfBottomlessPits; i++)
-        {
-            bottomlessPitTiles.Add(Instantiate(bottomlessPit));
-
-        }
-
-        for (int i = 0; i < bottomlessPitTiles.Count; i++)
-        {
-            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
-
-            bottomlessPitTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
-
-            bottomlessPitTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            bottomlessPitTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-            Destroy(meleeNormalTiles[meleeNormalTiles.IndexOf(selectedTile)]);
-            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
+            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(randomMeleeNormalTile));
+            Destroy(randomMeleeNormalTile);
         }
     }
 
@@ -333,7 +299,7 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
-    public void PlaceEnemyDroneSpawnsRandomly()
+    private void PlaceEnemyDroneSpawnsRandomly()
     {
         for (int i = 0; i < numberOfEnemyDroneSpawns; i++)
         {
@@ -367,82 +333,6 @@ public class StageGenerator : MonoBehaviour
 
                 Destroy(selectedTile);
             }
-        }
-    }
-
-    public void PlaceMeleeRestrictedTilesRandomly()
-    {
-        for (int i = 0; i < numberOfMeleeRestrictedTiles; i++)
-        {
-            meleeRestrictedTiles.Add(Instantiate(meleeRestricted));
-
-            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
-
-            meleeRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
-
-            meleeRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            meleeRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
-
-            Destroy(selectedTile);
-        }
-    }
-
-    public void PlaceRangedRestrictedTilesRandomly()
-    {
-        for (int i = 0; i < numberOfRangedRestrictedTiles; i++)
-        {
-            rangedRestrictedTiles.Add(Instantiate(rangedRestricted));
-
-            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
-
-            rangedRestrictedTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1f, selectedTile.transform.position.z);
-
-            rangedRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            rangedRestrictedTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
-
-            Destroy(selectedTile);
-        }
-    }
-
-    public void PlaceMeleeImpassableTilesRandomly()
-    {
-        for (int i = 0; i < numberOfMeleeImpassableTiles; i++)
-        {
-            meleeImpassableTiles.Add(Instantiate(meleeImpassable));
-
-            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
-
-            meleeImpassableTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 0.5f, selectedTile.transform.position.z);
-
-            meleeImpassableTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            meleeImpassableTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
-
-            Destroy(selectedTile);
-        }
-    }
-
-    private void PlaceRangedCamouflageTilesRandomly()
-    {
-        for (int i = 0; i < numberOfRangedCamouflageTiles; i++)
-        {
-            rangedCamouflageTiles.Add(Instantiate(rangedCamouflage));
-
-            GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
-
-            rangedCamouflageTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1, selectedTile.transform.position.z);
-
-            rangedCamouflageTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-            rangedCamouflageTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-
-            meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
-            Destroy(selectedTile);
         }
     }
 
