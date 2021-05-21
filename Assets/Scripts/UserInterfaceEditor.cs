@@ -14,119 +14,67 @@ public class UserInterfaceEditor : MonoBehaviour
         {
             case ("Melee Normal"):
                 {
-                    QueueUpMeleeNormalTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeNormal = true;
                     break;
                 }
 
             case ("Ranged Normal"):
                 {
-                    QueueUpRangedNormalTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedNormal = true;
                     break;
                 }
 
             case ("Bottomless Pit"):
                 {
-                    QueueUpBottomlessPitTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().bottomlessPit = true;
                     break;
                 }
 
             case ("Player Spawn"):
                 {
-                    QueueUpPlayerSpawnTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().playerSpawn = true;
                     break;
                 }
 
             case ("Enemy Spawn"):
                 {
-                    QueueUpEnemySpawnTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemySpawn = true;
                     break;
                 }
 
             case ("Drone Spawn"):
                 {
-                    QueueUpEnemyDroneSpawnTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemyDroneSpawn = true;
                     break;
                 }
 
             case ("Melee Restricted"):
                 {
-                    QueueUpMeleeRestrictedTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeRestricted = true;
                     break;
                 }
 
             case ("Ranged Restricted"):
                 {
-                    QueueUpRangedRestrictedTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedRestricted = true;
                     break;
                 }
 
             case ("Melee Impassable"):
                 {
-                    QueueUpMeleeImpassableTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeImpassable = true;
                     break;
                 }
 
             case ("Ranged Camouflage"):
                 {
-                    QueueUpRangedCamouflageTile();
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedCamouflage = true;
                     break;
                 }
 
             default: break;
         }
     }
-
-    public void QueueUpMeleeNormalTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeNormal = true;
-    }
-
-    public void QueueUpRangedNormalTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedNormal = true;
-    }
-
-    public void QueueUpBottomlessPitTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().bottomlessPit = true;
-    }
-
-    public void QueueUpPlayerSpawnTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().playerSpawn = true;
-    }
-
-    public void QueueUpEnemySpawnTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemySpawn = true;
-    }
-
-    public void QueueUpEnemyDroneSpawnTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemyDroneSpawn = true;
-    }
-
-    public void QueueUpMeleeRestrictedTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeRestricted = true;
-    }
-
-    public void QueueUpRangedRestrictedTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedRestricted = true;
-    }
-
-    public void QueueUpMeleeImpassableTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeImpassable = true;
-    }
-
-    public void QueueUpRangedCamouflageTile()
-    {
-        GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedCamouflage = true;
-    }
-
-
 
     public void SwitchToGeneratorMode()
     {
