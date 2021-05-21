@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537686966656762072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 3.5, y: 1, z: 4.5}
   m_LocalScale: {x: 0.98, y: 0.51, z: 0.98}
   m_Children: []
   m_Father: {fileID: 0}
@@ -122,5 +122,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageEditorBlocks: {fileID: 0}
   stageGenerator: {fileID: 0}
-  tileCoordinates: 0000000000000000
+  tileCoordinates: 0400000005000000
   thisTilesName: 

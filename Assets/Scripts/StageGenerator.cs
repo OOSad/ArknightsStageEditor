@@ -15,8 +15,8 @@ public class StageGenerator : MonoBehaviour
     public GameObject enemyDroneSpawn;
     public GameObject rangedCamouflage;
 
-    public List<GameObject> rangedNormalTiles = new List<GameObject>();
     public List<GameObject> meleeNormalTiles = new List<GameObject>();
+    public List<GameObject> rangedNormalTiles = new List<GameObject>();
     public List<GameObject> edgeOfStageTiles = new List<GameObject>();
     public List<GameObject> bottomlessPitTiles = new List<GameObject>();
     public List<GameObject> enemySpawnTiles = new List<GameObject>();
@@ -26,7 +26,6 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> meleeImpassableTiles = new List<GameObject>();
     public List<GameObject> enemyDroneSpawnTiles = new List<GameObject>();
     public List<GameObject> rangedCamouflageTiles = new List<GameObject>();
-
 
     public int stageWidthEditor;
     public int stageHeightEditor;
@@ -58,23 +57,7 @@ public class StageGenerator : MonoBehaviour
 
     private void Start()
     {
-        DestroyStage();
-
-        CreateLowerGround();
-        CreateEdgeTiles();
-
-        PlaceThisTileAroundRandomly(rangedNormal, numberOfRangedNormalTiles, rangedNormalTiles);
-
-        PlacePlayerSpawnsRandomly();
-        PlaceEnemySpawnsRandomly();
-        PlaceEnemyDroneSpawnsRandomly();
-
-        PlaceThisTileAroundRandomly(bottomlessPit, numberOfBottomlessPits, bottomlessPitTiles);
-        PlaceThisTileAroundRandomly(meleeRestricted, numberOfMeleeRestrictedTiles, meleeRestrictedTiles);
-        PlaceThisTileAroundRandomly(rangedRestricted, numberOfRangedRestrictedTiles, rangedRestrictedTiles);
-        PlaceThisTileAroundRandomly(meleeImpassable, numberOfMeleeImpassableTiles, meleeImpassableTiles);
-        PlaceThisTileAroundRandomly(rangedCamouflage, numberOfRangedCamouflageTiles, rangedCamouflageTiles);
-
+        RegenerateStage();
         UpdateEditorValues();
     }
 
@@ -128,9 +111,9 @@ public class StageGenerator : MonoBehaviour
 
             PlaceThisTileAroundRandomly(rangedNormal, numberOfRangedNormalTiles, rangedNormalTiles);
 
-            PlacePlayerSpawnsRandomly();
-            PlaceEnemySpawnsRandomly();
-            PlaceEnemyDroneSpawnsRandomly();
+            PlaceThisSpawnAroundRandomly(playerSpawn, numberOfPlayerSpawns, playerSpawnTiles, playerSpawnOnOutside);
+            PlaceThisSpawnAroundRandomly(enemySpawn, numberOfEnemySpawns, enemySpawnTiles, enemySpawnOnOutside);
+            PlaceThisSpawnAroundRandomly(enemyDroneSpawn, numberOfEnemyDroneSpawns, enemyDroneSpawnTiles, enemySpawnOnOutside);
 
             PlaceThisTileAroundRandomly(bottomlessPit, numberOfBottomlessPits, bottomlessPitTiles);
             PlaceThisTileAroundRandomly(meleeRestricted, numberOfMeleeRestrictedTiles, meleeRestrictedTiles);
@@ -139,8 +122,6 @@ public class StageGenerator : MonoBehaviour
             PlaceThisTileAroundRandomly(rangedCamouflage, numberOfRangedCamouflageTiles, rangedCamouflageTiles);
         }
     }
-
-    
 
     private void CreateLowerGround()
     {
@@ -225,23 +206,23 @@ public class StageGenerator : MonoBehaviour
         }
     }
 
-    private void PlacePlayerSpawnsRandomly()
+    private void PlaceThisSpawnAroundRandomly(GameObject spawnTile, int numberOfSpawnsYouWantToPlace, List<GameObject> listToAddSpawnsInto, bool placeSpawnsOnTheEdge)
     {
-        for (int i = 0; i < numberOfPlayerSpawns; i++)
+        for (int i = 0; i < numberOfSpawnsYouWantToPlace; i++)
         {
-            playerSpawnTiles.Add(Instantiate(playerSpawn));
+            listToAddSpawnsInto.Add(Instantiate(spawnTile));
         }
 
-        for (int i = 0; i < playerSpawnTiles.Count; i++)
+        for (int i = 0; i < listToAddSpawnsInto.Count; i++)
         {
-            if (playerSpawnOnOutside)
+            if (placeSpawnsOnTheEdge)
             {
                 GameObject selectedEdgeTile = edgeOfStageTiles[Random.Range(0, edgeOfStageTiles.Count)];
 
-                playerSpawnTiles[i].transform.position = new Vector3(selectedEdgeTile.transform.position.x, 1.5f, selectedEdgeTile.transform.position.z);
+                listToAddSpawnsInto[i].transform.position = new Vector3(selectedEdgeTile.transform.position.x, spawnTile.transform.position.y, selectedEdgeTile.transform.position.z);
 
-                playerSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[0];
-                playerSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[1];
+                listToAddSpawnsInto[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[0];
+                listToAddSpawnsInto[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[1];
 
                 edgeOfStageTiles.RemoveAt(edgeOfStageTiles.IndexOf(selectedEdgeTile));
             }
@@ -250,84 +231,10 @@ public class StageGenerator : MonoBehaviour
             {
                 GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
 
-                playerSpawnTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1.5f, selectedTile.transform.position.z);
+                listToAddSpawnsInto[i].transform.position = new Vector3(selectedTile.transform.position.x, spawnTile.transform.position.y, selectedTile.transform.position.z);
 
-                playerSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-                playerSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-                meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
-
-                Destroy(selectedTile);
-            }
-        }
-    }
-
-    private void PlaceEnemySpawnsRandomly()
-    {
-        for (int i = 0; i < numberOfEnemySpawns; i++)
-        {
-            enemySpawnTiles.Add(Instantiate(enemySpawn));
-        }
-
-        for (int i = 0; i < enemySpawnTiles.Count; i++)
-        {
-            if (enemySpawnOnOutside)
-            {
-                GameObject selectedEdgeTile = edgeOfStageTiles[Random.Range(0, edgeOfStageTiles.Count)];
-
-                enemySpawnTiles[i].transform.position = new Vector3(selectedEdgeTile.transform.position.x, 1.5f, selectedEdgeTile.transform.position.z);
-
-                enemySpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[0];
-                enemySpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-                edgeOfStageTiles.RemoveAt(edgeOfStageTiles.IndexOf(selectedEdgeTile));
-            }
-
-            else
-            {
-                GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
-
-                enemySpawnTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1.5f, selectedTile.transform.position.z);
-
-                enemySpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-                enemySpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-                meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
-
-                Destroy(selectedTile);
-            }
-        }
-    }
-
-    private void PlaceEnemyDroneSpawnsRandomly()
-    {
-        for (int i = 0; i < numberOfEnemyDroneSpawns; i++)
-        {
-            enemyDroneSpawnTiles.Add(Instantiate(enemyDroneSpawn));
-        }
-
-        for (int i = 0; i < enemyDroneSpawnTiles.Count; i++)
-        {
-            if (enemySpawnOnOutside)
-            {
-                GameObject selectedEdgeTile = edgeOfStageTiles[Random.Range(0, edgeOfStageTiles.Count)];
-
-                enemyDroneSpawnTiles[i].transform.position = new Vector3(selectedEdgeTile.transform.position.x, 1f, selectedEdgeTile.transform.position.z);
-
-                enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[0];
-                enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedEdgeTile.GetComponent<StageEditor>().tileCoordinates[1];
-
-                edgeOfStageTiles.RemoveAt(edgeOfStageTiles.IndexOf(selectedEdgeTile));
-            }
-
-            else
-            {
-                GameObject selectedTile = meleeNormalTiles[Random.Range(0, meleeNormalTiles.Count)];
-
-                enemyDroneSpawnTiles[i].transform.position = new Vector3(selectedTile.transform.position.x, 1f, selectedTile.transform.position.z);
-
-                enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
-                enemyDroneSpawnTiles[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
+                listToAddSpawnsInto[i].GetComponent<StageEditor>().tileCoordinates[0] = selectedTile.GetComponent<StageEditor>().tileCoordinates[0];
+                listToAddSpawnsInto[i].GetComponent<StageEditor>().tileCoordinates[1] = selectedTile.GetComponent<StageEditor>().tileCoordinates[1];
 
                 meleeNormalTiles.RemoveAt(meleeNormalTiles.IndexOf(selectedTile));
 
@@ -338,72 +245,20 @@ public class StageGenerator : MonoBehaviour
 
     private void DestroyStage()
     {
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("MeleeNormal").Length; i++)
+        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, edgeOfStageTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles };
+
+        for (int i = 0; i < tileListIndex.Count; i++)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("MeleeNormal")[i]);
+            foreach (GameObject tileInStage in tileListIndex[i])
+            {
+                Destroy(tileInStage);
+            }
         }
 
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("RangedNormal").Length; i++)
+        foreach (List<GameObject> listOfTiles in tileListIndex)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("RangedNormal")[i]);
+            listOfTiles.Clear();
         }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("EdgeGround").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("EdgeGround")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("BottomlessPit").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("BottomlessPit")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("EnemySpawn").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("EnemySpawn")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("EnemyDroneSpawn").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("EnemyDroneSpawn")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("PlayerSpawn").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("PlayerSpawn")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("MeleeRestricted").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("MeleeRestricted")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("RangedRestricted").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("RangedRestricted")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("MeleeImpassable").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("MeleeImpassable")[i]);
-        }
-
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("RangedCamouflage").Length; i++)
-        {
-            Destroy(GameObject.FindGameObjectsWithTag("RangedCamouflage")[i]);
-        }
-
-        meleeNormalTiles.Clear();
-        rangedNormalTiles.Clear();
-        edgeOfStageTiles.Clear();
-        bottomlessPitTiles.Clear();
-        enemySpawnTiles.Clear();
-        enemyDroneSpawnTiles.Clear();
-        playerSpawnTiles.Clear();
-        meleeRestrictedTiles.Clear();
-        rangedRestrictedTiles.Clear();
-        meleeImpassableTiles.Clear();
-        rangedCamouflageTiles.Clear();
     }
 
     private void UpdateEditorValues()
