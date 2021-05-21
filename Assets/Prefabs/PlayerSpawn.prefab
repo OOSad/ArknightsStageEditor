@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5254693674176534581}
   - component: {fileID: 5457195278899877534}
   - component: {fileID: 9215363283915172525}
-  - component: {fileID: -1351703201559015586}
   - component: {fileID: -146392072689104469}
+  - component: {fileID: 7926784839186332105}
   m_Layer: 0
   m_Name: PlayerSpawn
   m_TagString: PlayerSpawn
@@ -95,19 +95,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1351703201559015586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3644515601715152187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da68ee724662e504eb8f57bfcd4033b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileHighlighted: {fileID: 2100000, guid: a9d3657d8441547419590f52caddf622, type: 2}
 --- !u!114 &-146392072689104469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +111,16 @@ MonoBehaviour:
   stageGenerator: {fileID: 0}
   tileCoordinates: 0000000000000000
   thisTilesName: 
+--- !u!114 &7926784839186332105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644515601715152187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df224290dae0944d8cdcb864f21de9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileHighlighted: {fileID: 2100000, guid: a9d3657d8441547419590f52caddf622, type: 2}

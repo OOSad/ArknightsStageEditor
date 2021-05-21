@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7700695907998919961}
   - component: {fileID: 7049850881723218510}
   - component: {fileID: -3980020956454113026}
-  - component: {fileID: -5329182425805765603}
+  - component: {fileID: -3113619186235094563}
   m_Layer: 0
-  m_Name: HigherGroundRestricted
+  m_Name: RangedRestricted
   m_TagString: RangedRestricted
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   stageGenerator: {fileID: 0}
   tileCoordinates: 0000000000000000
   thisTilesName: 
---- !u!114 &-5329182425805765603
+--- !u!114 &-3113619186235094563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1537686966656762072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a566ac364164b4cad0d0e680680703, type: 3}
+  m_Script: {fileID: 11500000, guid: 7df224290dae0944d8cdcb864f21de9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileHighlighted: {fileID: 2100000, guid: a9d3657d8441547419590f52caddf622, type: 2}

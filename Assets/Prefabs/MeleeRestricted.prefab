@@ -181,9 +181,9 @@ GameObject:
   - component: {fileID: 6914171664577773746}
   - component: {fileID: 6824712333171921136}
   - component: {fileID: 682764759034606897}
-  - component: {fileID: 4233042634486685454}
+  - component: {fileID: 2623492636002432661}
   m_Layer: 0
-  m_Name: LowerGroundRestricted
+  m_Name: MeleeRestricted
   m_TagString: MeleeRestricted
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,7 @@ MonoBehaviour:
   stageGenerator: {fileID: 0}
   tileCoordinates: 0000000000000000
   thisTilesName: 
---- !u!114 &4233042634486685454
+--- !u!114 &2623492636002432661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3240979498133792823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daadb69887bf5b2478874a3ec02860c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7df224290dae0944d8cdcb864f21de9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileHighlighted: {fileID: 2100000, guid: a9d3657d8441547419590f52caddf622, type: 2}

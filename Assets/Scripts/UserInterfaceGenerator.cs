@@ -20,14 +20,13 @@ public class UserInterfaceGenerator : MonoBehaviour
     public InputField numberOfGroundTilesImpassableField;
     public InputField numberOfRangedCamouflageField;
 
-    public Toggle playerSpawnOutside;
-
     public GameObject editorModeUICanvas;
 
 
     private void Start()
     {
         // Update UI elements after the program has had a moment to load.
+        // (program will throw up some errors otherwise)
         Invoke("UpdateUIInputFields", 0.5f);
     }
 
@@ -79,33 +78,6 @@ public class UserInterfaceGenerator : MonoBehaviour
         stageGenerator.GetComponent<StageGenerator>().numberOfRangedRestrictedEditor = Convert.ToInt32(numberOfRangedTilesRestrictedField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfMeleeImpassableEditor = Convert.ToInt32(numberOfGroundTilesImpassableField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfRangedCamouflageTilesEditor = Convert.ToInt32(numberOfRangedCamouflageField.text);
-    }
-
-
-    public void TogglePlayerSpawnsOnOutside(Toggle playerSpawnOutsideToggle)
-    {
-        if (playerSpawnOutsideToggle.isOn)
-        {
-            stageGenerator.GetComponent<StageGenerator>().playerSpawnOnOutside = true;
-        }
-
-        else
-        {
-            stageGenerator.GetComponent<StageGenerator>().playerSpawnOnOutside = false;
-        }
-    }
-
-    public void ToggleEnemySpawnsOnOutside(Toggle enemySpawnOutsideToggle)
-    {
-        if (enemySpawnOutsideToggle.isOn)
-        {
-            stageGenerator.GetComponent<StageGenerator>().enemySpawnOnOutside = true;
-        }
-
-        else
-        {
-            stageGenerator.GetComponent<StageGenerator>().enemySpawnOnOutside = false;
-        }
     }
 
     public void SwitchToEditorMode()

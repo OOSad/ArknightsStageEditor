@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 4737891120118524540}
   - component: {fileID: 3259761331187521574}
   - component: {fileID: -2976971946170464588}
-  - component: {fileID: -5312606185541132930}
+  - component: {fileID: -3377555154961733486}
   m_Layer: 0
   m_Name: EnemyDroneSpawn
   m_TagString: EnemyDroneSpawn
@@ -449,7 +449,7 @@ MonoBehaviour:
   stageGenerator: {fileID: 0}
   tileCoordinates: 0000000000000000
   thisTilesName: 
---- !u!114 &-5312606185541132930
+--- !u!114 &-3377555154961733486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1913746677811958141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f0a3f08b44bd241aaaf47a8c33c321, type: 3}
+  m_Script: {fileID: 11500000, guid: 7df224290dae0944d8cdcb864f21de9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileHighlighted: {fileID: 2100000, guid: a9d3657d8441547419590f52caddf622, type: 2}

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8379754280254333651}
   - component: {fileID: 4737891120118524540}
   - component: {fileID: 3259761331187521574}
-  - component: {fileID: -6220121722235912926}
   - component: {fileID: -2976971946170464588}
+  - component: {fileID: 5328479189961252078}
   m_Layer: 0
   m_Name: EnemySpawn
   m_TagString: EnemySpawn
@@ -95,19 +95,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6220121722235912926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913746677811958141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 277dcabfff7b5f64e86bbea49ca4ff8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileHighlighted: {fileID: 2100000, guid: a9d3657d8441547419590f52caddf622, type: 2}
 --- !u!114 &-2976971946170464588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +111,16 @@ MonoBehaviour:
   stageGenerator: {fileID: 0}
   tileCoordinates: 0000000000000000
   thisTilesName: 
+--- !u!114 &5328479189961252078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913746677811958141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df224290dae0944d8cdcb864f21de9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileHighlighted: {fileID: 2100000, guid: a9d3657d8441547419590f52caddf622, type: 2}

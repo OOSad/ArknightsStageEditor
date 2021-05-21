@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class RangedCamouflage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TileHighlighting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Material tileHighlighted;
     private Material tileDefault;
@@ -16,7 +16,6 @@ public class RangedCamouflage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerEnter(PointerEventData eventData)
     {
         this.GetComponent<Renderer>().material = tileHighlighted;
-        Debug.Log("RangedCamouflage " + this.GetComponent<StageEditor>().tileCoordinates[0] + " " + this.GetComponent<StageEditor>().tileCoordinates[1]);
     }
 
     public void OnPointerExit(PointerEventData eventData)

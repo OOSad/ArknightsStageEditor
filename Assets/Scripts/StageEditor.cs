@@ -8,7 +8,6 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
     public GameObject stageEditorBlocks;
     public GameObject stageGenerator;
 
-    public int[] tileCoordinates = { 0, 0 };
     public string thisTilesName = "";
 
     private void Start()
@@ -23,7 +22,6 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
         {
             GameObject selectedBlock = Instantiate(stageEditorBlocks.GetComponent<StageEditorBlocks>().currentlySelectedBlock);
             selectedBlock.transform.position = new Vector3 (this.transform.position.x, selectedBlock.transform.position.y, this.transform.position.z);
-            selectedBlock.GetComponent<StageEditor>().tileCoordinates = this.tileCoordinates;
 
             switch (selectedBlock.name)
             {
