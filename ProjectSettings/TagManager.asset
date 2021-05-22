@@ -20,6 +20,7 @@ TagManager:
   - RangedRestricted
   - MeleeRestricted
   - MeleeImpassable
+  - RangedDefUp
   layers:
   - Default
   - TransparentFX

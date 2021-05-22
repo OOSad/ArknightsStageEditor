@@ -72,6 +72,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Ranged Def Up"):
+                {
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedDefUp = true;
+                    break;
+                }
+
             default: break;
         }
     }

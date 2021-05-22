@@ -13,6 +13,7 @@ public class StageGenerator : MonoBehaviour
     public GameObject meleeImpassable;
     public GameObject enemyDroneSpawn;
     public GameObject rangedCamouflage;
+    public GameObject rangedDefUp;
 
     public List<GameObject> meleeNormalTiles = new List<GameObject>();
     public List<GameObject> rangedNormalTiles = new List<GameObject>();
@@ -24,6 +25,7 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> meleeImpassableTiles = new List<GameObject>();
     public List<GameObject> enemyDroneSpawnTiles = new List<GameObject>();
     public List<GameObject> rangedCamouflageTiles = new List<GameObject>();
+    public List<GameObject> rangedDefUpTiles = new List<GameObject>();
 
     public int stageWidthEditor;
     public int stageHeightEditor;
@@ -36,9 +38,10 @@ public class StageGenerator : MonoBehaviour
     public int numberOfMeleeImpassableEditor;
     public int numberOfEnemyDroneSpawnsEditor;
     public int numberOfRangedCamouflageTilesEditor;
+    public int numberOfRangedDefUpTilesEditor;
 
-    private int stageWidth = 10;
-    private int stageHeight = 5;
+    private int stageWidth = 12;
+    private int stageHeight = 6;
     private int numberOfRangedNormalTiles = 15;
     private int numberOfBottomlessPits = 2;
     private int numberOfEnemySpawns = 1;
@@ -48,9 +51,8 @@ public class StageGenerator : MonoBehaviour
     private int numberOfMeleeImpassableTiles = 1;
     private int numberOfEnemyDroneSpawns = 1;
     private int numberOfRangedCamouflageTiles = 1;
+    private int numberOfRangedDefUpTiles = 1;
 
-    public bool playerSpawnOnOutside = false;
-    public bool enemySpawnOnOutside = false;
     public bool regenerateStage = false;
 
     private void Start()
@@ -98,6 +100,7 @@ public class StageGenerator : MonoBehaviour
             numberOfRangedRestrictedTiles != numberOfRangedRestrictedEditor ||
             numberOfMeleeImpassableTiles != numberOfMeleeImpassableEditor ||
             numberOfRangedCamouflageTiles != numberOfRangedCamouflageTilesEditor ||
+            numberOfRangedDefUpTiles != numberOfRangedDefUpTilesEditor ||
             regenerateStage == true)
         {
             DestroyStage();
@@ -115,6 +118,7 @@ public class StageGenerator : MonoBehaviour
             PlaceThisTileAroundRandomly(rangedRestricted, numberOfRangedRestrictedTiles, rangedRestrictedTiles);
             PlaceThisTileAroundRandomly(meleeImpassable, numberOfMeleeImpassableTiles, meleeImpassableTiles);
             PlaceThisTileAroundRandomly(rangedCamouflage, numberOfRangedCamouflageTiles, rangedCamouflageTiles);
+            PlaceThisTileAroundRandomly(rangedDefUp, numberOfRangedDefUpTiles, rangedDefUpTiles);
         }
     }
 
@@ -158,7 +162,7 @@ public class StageGenerator : MonoBehaviour
 
     private void DestroyStage()
     {
-        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles };
+        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles, rangedDefUpTiles };
 
         for (int i = 0; i < tileListIndex.Count; i++)
         {
@@ -187,6 +191,7 @@ public class StageGenerator : MonoBehaviour
         numberOfRangedRestrictedEditor = numberOfRangedRestrictedTiles;
         numberOfMeleeImpassableEditor = numberOfMeleeImpassableTiles;
         numberOfRangedCamouflageTilesEditor = numberOfRangedCamouflageTiles;
+        numberOfRangedDefUpTilesEditor = numberOfRangedDefUpTiles;
     }
 
     private void UpdatePrivateStageValues()
@@ -202,6 +207,7 @@ public class StageGenerator : MonoBehaviour
         numberOfRangedRestrictedTiles = numberOfRangedRestrictedEditor;
         numberOfMeleeImpassableTiles = numberOfMeleeImpassableEditor;
         numberOfRangedCamouflageTiles = numberOfRangedCamouflageTilesEditor;
+        numberOfRangedDefUpTiles = numberOfRangedDefUpTilesEditor;
 
         regenerateStage = false;
     }

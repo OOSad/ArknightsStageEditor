@@ -19,6 +19,7 @@ public class UserInterfaceGenerator : MonoBehaviour
     public InputField numberOfRangedTilesRestrictedField;
     public InputField numberOfGroundTilesImpassableField;
     public InputField numberOfRangedCamouflageField;
+    public InputField numberOfRangedDefUpField;
 
     public GameObject editorModeUICanvas;
 
@@ -43,6 +44,7 @@ public class UserInterfaceGenerator : MonoBehaviour
         numberOfRangedTilesRestrictedField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfRangedRestrictedEditor);
         numberOfGroundTilesImpassableField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfMeleeImpassableEditor);
         numberOfRangedCamouflageField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfRangedCamouflageTilesEditor);
+        numberOfRangedDefUpField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfRangedDefUpTilesEditor);
     }
 
     public void UpdateEditorValues()
@@ -78,6 +80,7 @@ public class UserInterfaceGenerator : MonoBehaviour
         stageGenerator.GetComponent<StageGenerator>().numberOfRangedRestrictedEditor = Convert.ToInt32(numberOfRangedTilesRestrictedField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfMeleeImpassableEditor = Convert.ToInt32(numberOfGroundTilesImpassableField.text);
         stageGenerator.GetComponent<StageGenerator>().numberOfRangedCamouflageTilesEditor = Convert.ToInt32(numberOfRangedCamouflageField.text);
+        stageGenerator.GetComponent<StageGenerator>().numberOfRangedDefUpTilesEditor = Convert.ToInt32(numberOfRangedDefUpField.text);
     }
 
     public void SwitchToEditorMode()

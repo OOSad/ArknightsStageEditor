@@ -37,6 +37,9 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "EnemySpawn(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().enemySpawnTiles.Add(selectedBlock);
                     break;
+                case "EnemyDroneSpawn(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().enemyDroneSpawnTiles.Add(selectedBlock);
+                    break;
                 case "PlayerSpawn(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.Add(selectedBlock);
                     break;
@@ -52,8 +55,13 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "RangedCamouflage(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.Add(selectedBlock);
                     break;
+                case "RangedDefUp(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedDefUpTiles.Add(selectedBlock);
+                    break;
 
-                default: break;
+                default:
+                    Debug.Log("Did not find list to add block to! Please check StageEditor script.");
+                    break;
             }
 
             thisTilesName = this.name;
@@ -72,6 +80,9 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "EnemySpawn(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().enemySpawnTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().enemySpawnTiles.IndexOf(this.gameObject));
                     break;
+                case "EnemyDroneSpawn(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().enemyDroneSpawnTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().enemyDroneSpawnTiles.IndexOf(this.gameObject));
+                    break;
                 case "PlayerSpawn(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.IndexOf(this.gameObject));
                     break;
@@ -87,8 +98,13 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "RangedCamouflage(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.IndexOf(this.gameObject));
                     break;
+                case "RangedDefUp(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedDefUpTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedDefUpTiles.IndexOf(this.gameObject));
+                    break;
 
-                default: break;
+                default:
+                    Debug.Log("Did not find list to remove block from! Please check StageEditor script.");
+                    break;
             }
 
             Destroy(this.gameObject);
