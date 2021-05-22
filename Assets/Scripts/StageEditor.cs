@@ -61,6 +61,9 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "MeleeDefUp(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().meleeDefUpTiles.Add(selectedBlock);
                     break;
+                case "RangedRegen(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedRegenTiles.Add(selectedBlock);
+                    break;
 
                 default:
                     Debug.Log("Did not find list to add block to! Please check StageEditor script.");
@@ -106,6 +109,9 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                     break;
                 case "MeleeDefUp(Clone)":
                     stageGenerator.GetComponent<StageGenerator>().meleeDefUpTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().meleeDefUpTiles.IndexOf(this.gameObject));
+                    break;
+                case "RangedRegen(Clone)":
+                    stageGenerator.GetComponent<StageGenerator>().rangedRegenTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedRegenTiles.IndexOf(this.gameObject));
                     break;
 
                 default:

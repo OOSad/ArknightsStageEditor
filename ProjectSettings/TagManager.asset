@@ -22,6 +22,7 @@ TagManager:
   - MeleeImpassable
   - RangedDefUp
   - MeleeDefUp
+  - RangedRegen
   layers:
   - Default
   - TransparentFX
