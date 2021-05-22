@@ -14,7 +14,7 @@ public class CameraPlacement : MonoBehaviour
     public void UpdateCameraPosition()
     {
         float camera_x = stageGeneratorScene.stageWidthEditor / 2;
-        float camera_y = stageGeneratorScene.stageHeightEditor + 3;
+        float camera_y = stageGeneratorScene.stageHeightEditor + 2;
 
         if (stageGeneratorScene.stageWidthEditor % 2 == 0)
         {
