@@ -21,6 +21,7 @@ TagManager:
   - MeleeRestricted
   - MeleeImpassable
   - RangedDefUp
+  - MeleeDefUp
   layers:
   - Default
   - TransparentFX

@@ -77,6 +77,11 @@ public class UserInterfaceEditor : MonoBehaviour
                     GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedDefUp = true;
                     break;
                 }
+            case ("Melee Def Up"):
+                {
+                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeDefUp = true;
+                    break;
+                }
 
             default: break;
         }

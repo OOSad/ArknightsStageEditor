@@ -15,6 +15,7 @@ public class StageEditorBlocks : MonoBehaviour
     public GameObject meleeImpassableTile;
     public GameObject rangedCamouflageTile;
     public GameObject rangedDefUpTile;
+    public GameObject meleeDefUpTile;
 
 
     public GameObject currentlySelectedBlock;
@@ -30,6 +31,7 @@ public class StageEditorBlocks : MonoBehaviour
     public bool meleeImpassable;
     public bool rangedCamouflage;
     public bool rangedDefUp;
+    public bool meleeDefUp;
 
     private void Update()
     {
@@ -97,6 +99,12 @@ public class StageEditorBlocks : MonoBehaviour
         {
             currentlySelectedBlock = rangedDefUpTile;
             rangedDefUp = false;
+        }
+
+        if (meleeDefUp)
+        {
+            currentlySelectedBlock = meleeDefUpTile;
+            meleeDefUp = false;
         }
     }
 }
