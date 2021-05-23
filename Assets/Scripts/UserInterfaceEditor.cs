@@ -15,85 +15,85 @@ public class UserInterfaceEditor : MonoBehaviour
         {
             case ("Melee Normal"):
                 {
-                    stageEditorBlocks.meleeNormal = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.meleeNormalTile;
                     break;
                 }
 
             case ("Ranged Normal"):
                 {
-                    stageEditorBlocks.rangedNormal = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedNormalTile;
                     break;
                 }
 
             case ("Bottomless Pit"):
                 {
-                    stageEditorBlocks.bottomlessPit = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.bottomlessPitTile;
                     break;
                 }
 
             case ("Player Spawn"):
                 {
-                    stageEditorBlocks.playerSpawn = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.playerSpawnTile;
                     break;
                 }
 
             case ("Enemy Spawn"):
                 {
-                    stageEditorBlocks.enemySpawn = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.enemySpawnTile;
                     break;
                 }
 
             case ("Drone Spawn"):
                 {
-                    stageEditorBlocks.enemyDroneSpawn = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.enemyDroneSpawnTile;
                     break;
                 }
 
             case ("Melee Restricted"):
                 {
-                    stageEditorBlocks.meleeRestricted = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.meleeRestrictedTile;
                     break;
                 }
 
             case ("Ranged Restricted"):
                 {
-                    stageEditorBlocks.rangedRestricted = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedRestrictedTile;
                     break;
                 }
 
             case ("Melee Impassable"):
                 {
-                    stageEditorBlocks.meleeImpassable = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.meleeImpassableTile;
                     break;
                 }
 
             case ("Ranged Camouflage"):
                 {
-                    stageEditorBlocks.rangedCamouflage = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedCamouflageTile;
                     break;
                 }
 
             case ("Ranged Def Up"):
                 {
-                    stageEditorBlocks.rangedDefUp = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedDefUpTile;
                     break;
                 }
 
             case ("Melee Def Up"):
                 {
-                    stageEditorBlocks.meleeDefUp = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.meleeDefUpTile;
                     break;
                 }
 
             case ("Ranged Regen"):
                 {
-                    stageEditorBlocks.rangedRegen = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedRegenTile;
                     break;
                 }
 
             case ("Melee Regen"):
                 {
-                    stageEditorBlocks.meleeRegen = true;
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.meleeRegenTile;
                     break;
                 }
 

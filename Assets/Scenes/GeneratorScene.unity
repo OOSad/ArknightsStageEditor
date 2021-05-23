@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 36208733}
   - component: {fileID: 36208732}
   m_Layer: 5
-  m_Name: NumberOfGroundTilesRestrictedField
+  m_Name: NumberOfMeleeRestrictedField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6516,7 +6516,7 @@ GameObject:
   - component: {fileID: 1733048228}
   - component: {fileID: 1733048227}
   m_Layer: 5
-  m_Name: NumberOfMeleeTilesImpassableField
+  m_Name: NumberOfMeleeImpassableField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6773,14 +6773,14 @@ MonoBehaviour:
   stageGenerator: {fileID: 475344532}
   stageWidthField: {fileID: 1677437950}
   stageHeightField: {fileID: 1446350184}
-  numberOfHigherGroundTilesField: {fileID: 1872271071}
+  numberOfRangedNormalField: {fileID: 1872271071}
   numberOfBottomlessPitsField: {fileID: 1732456954}
   numberOfPlayerSpawnsField: {fileID: 240982898}
   numberOfEnemySpawnsField: {fileID: 1895465429}
   numberOfEnemyDroneSpawnsField: {fileID: 861702208}
-  numberOfGroundTilesRestrictedField: {fileID: 36208732}
-  numberOfRangedTilesRestrictedField: {fileID: 1950146289}
-  numberOfGroundTilesImpassableField: {fileID: 1733048227}
+  numberOfMeleeRestrictedField: {fileID: 36208732}
+  numberOfRangedRestrictedField: {fileID: 1950146289}
+  numberOfMeleeImpassableField: {fileID: 1733048227}
   numberOfRangedCamouflageField: {fileID: 470156911}
   numberOfRangedDefUpField: {fileID: 180656128}
   numberOfMeleeDefUpField: {fileID: 985422195}
@@ -7288,7 +7288,7 @@ GameObject:
   - component: {fileID: 1872271073}
   - component: {fileID: 1872271071}
   m_Layer: 5
-  m_Name: NumberOfHigherGroundTilesField
+  m_Name: NumberOfRangedNormalField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7672,7 +7672,7 @@ GameObject:
   - component: {fileID: 1950146290}
   - component: {fileID: 1950146289}
   m_Layer: 5
-  m_Name: NumberOfRangedTilesRestrictedField
+  m_Name: NumberOfRangedRestrictedField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
