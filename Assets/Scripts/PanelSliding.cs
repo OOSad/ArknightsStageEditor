@@ -15,14 +15,14 @@ public class PanelSliding : MonoBehaviour, IDragHandler
 
         mouse = Mouse.current;
 
-        if (this.GetComponent<RectTransform>().localPosition.y < -50)
+        if (this.GetComponent<RectTransform>().localPosition.y < -77)
         {
-            this.transform.localPosition = new Vector3(this.transform.localPosition.x, -50, this.transform.localPosition.z);
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x, -77, this.transform.localPosition.z);
         }
 
-        if (this.GetComponent<RectTransform>().localPosition.y > 50)
+        if (this.GetComponent<RectTransform>().localPosition.y > 77)
         {
-            this.transform.localPosition = new Vector3(this.transform.localPosition.x, 50, this.transform.localPosition.z);
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x, 77, this.transform.localPosition.z);
         }
     }
 

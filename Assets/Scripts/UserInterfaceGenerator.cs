@@ -23,6 +23,8 @@ public class UserInterfaceGenerator : MonoBehaviour
     public InputField numberOfMeleeDefUpField;
     public InputField numberOfRangedRegenField;
     public InputField numberOfMeleeRegenField;
+    public InputField numberOfRangedAntiAirField;
+    public InputField numberOfMeleeOriginiumField;
 
     public GameObject editorModeUICanvas;
 
@@ -51,6 +53,8 @@ public class UserInterfaceGenerator : MonoBehaviour
         numberOfMeleeDefUpField.text = Convert.ToString(stageGenerator.numberOfMeleeDefUpTilesEditor);
         numberOfRangedRegenField.text = Convert.ToString(stageGenerator.numberOfRangedRegenTilesEditor);
         numberOfMeleeRegenField.text = Convert.ToString(stageGenerator.numberOfMeleeRegenTilesEditor);
+        numberOfRangedAntiAirField.text = Convert.ToString(stageGenerator.numberOfRangedAntiAirTilesEditor);
+        numberOfMeleeOriginiumField.text = Convert.ToString(stageGenerator.numberOfMeleeOriginiumTilesEditor);
     }
 
     public void UpdateEditorValues()
@@ -90,6 +94,8 @@ public class UserInterfaceGenerator : MonoBehaviour
         stageGenerator.numberOfMeleeDefUpTilesEditor = Convert.ToInt32(numberOfMeleeDefUpField.text);
         stageGenerator.numberOfRangedRegenTilesEditor = Convert.ToInt32(numberOfRangedRegenField.text);
         stageGenerator.numberOfMeleeRegenTilesEditor = Convert.ToInt32(numberOfMeleeRegenField.text);
+        stageGenerator.numberOfRangedAntiAirTilesEditor = Convert.ToInt32(numberOfRangedAntiAirField.text);
+        stageGenerator.numberOfMeleeOriginiumTilesEditor = Convert.ToInt32(numberOfMeleeOriginiumField.text);
     }
 
     public void SwitchToEditorMode()

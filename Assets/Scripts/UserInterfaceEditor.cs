@@ -97,6 +97,18 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Ranged Anti Air"):
+                {
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedAntiAirTile;
+                    break;
+                }
+
+            case ("Melee Originium"):
+                {
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.meleeOriginiumTile;
+                    break;
+                }
+
             default: break;
         }
     }

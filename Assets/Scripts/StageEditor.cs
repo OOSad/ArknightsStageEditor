@@ -67,6 +67,12 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "MeleeRegen(Clone)":
                     stageGenerator.meleeRegenTiles.Add(selectedBlock);
                     break;
+                case "RangedAntiAir(Clone)":
+                    stageGenerator.rangedAntiAirTiles.Add(selectedBlock);
+                    break;
+                case "MeleeOriginium(Clone)":
+                    stageGenerator.meleeOriginiumTiles.Add(selectedBlock);
+                    break;
 
                 default:
                     Debug.Log("Did not find list to add block to! Please check StageEditor script.");
@@ -118,6 +124,12 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                     break;
                 case "MeleeRegen(Clone)":
                     stageGenerator.meleeRegenTiles.RemoveAt(stageGenerator.meleeRegenTiles.IndexOf(this.gameObject));
+                    break;
+                case "RangedAntiAir(Clone)":
+                    stageGenerator.rangedAntiAirTiles.RemoveAt(stageGenerator.rangedAntiAirTiles.IndexOf(this.gameObject));
+                    break;
+                case "MeleeOriginium(Clone)":
+                    stageGenerator.meleeOriginiumTiles.RemoveAt(stageGenerator.meleeOriginiumTiles.IndexOf(this.gameObject));
                     break;
 
                 default:

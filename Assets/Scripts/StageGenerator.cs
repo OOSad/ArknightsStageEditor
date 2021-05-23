@@ -17,6 +17,8 @@ public class StageGenerator : MonoBehaviour
     public GameObject meleeDefUp;
     public GameObject rangedRegen;
     public GameObject meleeRegen;
+    public GameObject rangedAntiAir;
+    public GameObject meleeOriginium;
 
     public List<GameObject> meleeNormalTiles = new List<GameObject>();
     public List<GameObject> rangedNormalTiles = new List<GameObject>();
@@ -32,6 +34,9 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> meleeDefUpTiles = new List<GameObject>();
     public List<GameObject> rangedRegenTiles = new List<GameObject>();
     public List<GameObject> meleeRegenTiles = new List<GameObject>();
+    public List<GameObject> rangedAntiAirTiles = new List<GameObject>();
+    public List<GameObject> meleeOriginiumTiles = new List<GameObject>();
+
 
     public int stageWidthEditor;
     public int stageHeightEditor;
@@ -48,6 +53,8 @@ public class StageGenerator : MonoBehaviour
     public int numberOfMeleeDefUpTilesEditor;
     public int numberOfRangedRegenTilesEditor;
     public int numberOfMeleeRegenTilesEditor;
+    public int numberOfRangedAntiAirTilesEditor;
+    public int numberOfMeleeOriginiumTilesEditor;
 
     private int stageWidth = 12;
     private int stageHeight = 6;
@@ -64,6 +71,8 @@ public class StageGenerator : MonoBehaviour
     private int numberOfMeleeDefUpTiles = 1;
     private int numberOfRangedRegenTiles = 1;
     private int numberOfMeleeRegenTiles = 1;
+    private int numberOfRangedAntiAirTiles = 1;
+    private int numberOfMeleeOriginiumTiles = 1;
 
     public bool regenerateStage = false;
 
@@ -116,6 +125,8 @@ public class StageGenerator : MonoBehaviour
             numberOfMeleeDefUpTiles != numberOfMeleeDefUpTilesEditor ||
             numberOfRangedRegenTiles != numberOfRangedRegenTilesEditor ||
             numberOfMeleeRegenTiles != numberOfMeleeRegenTilesEditor ||
+            numberOfRangedAntiAirTiles != numberOfRangedAntiAirTilesEditor ||
+            numberOfMeleeOriginiumTiles != numberOfMeleeOriginiumTilesEditor ||
             regenerateStage == true)
         {
             DestroyStage();
@@ -137,6 +148,8 @@ public class StageGenerator : MonoBehaviour
             PlaceThisTileAroundRandomly(meleeDefUp, numberOfMeleeDefUpTiles, meleeDefUpTiles);
             PlaceThisTileAroundRandomly(rangedRegen, numberOfRangedRegenTiles, rangedRegenTiles);
             PlaceThisTileAroundRandomly(meleeRegen, numberOfMeleeRegenTiles, meleeRegenTiles);
+            PlaceThisTileAroundRandomly(rangedAntiAir, numberOfRangedAntiAirTiles, rangedAntiAirTiles);
+            PlaceThisTileAroundRandomly(meleeOriginium, numberOfMeleeOriginiumTiles, meleeOriginiumTiles);
         }
     }
 
@@ -180,7 +193,7 @@ public class StageGenerator : MonoBehaviour
 
     private void DestroyStage()
     {
-        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles, rangedDefUpTiles, meleeDefUpTiles, rangedRegenTiles, meleeRegenTiles };
+        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles, rangedDefUpTiles, meleeDefUpTiles, rangedRegenTiles, meleeRegenTiles, rangedAntiAirTiles, meleeOriginiumTiles };
 
         for (int i = 0; i < tileListIndex.Count; i++)
         {
@@ -213,6 +226,8 @@ public class StageGenerator : MonoBehaviour
         numberOfMeleeDefUpTilesEditor = numberOfMeleeDefUpTiles;
         numberOfRangedRegenTilesEditor = numberOfRangedRegenTiles;
         numberOfMeleeRegenTilesEditor = numberOfMeleeRegenTiles;
+        numberOfRangedAntiAirTilesEditor = numberOfRangedAntiAirTiles;
+        numberOfMeleeOriginiumTilesEditor = numberOfMeleeOriginiumTiles;
     }
 
     private void UpdatePrivateStageValues()
@@ -232,6 +247,8 @@ public class StageGenerator : MonoBehaviour
         numberOfMeleeDefUpTiles = numberOfMeleeDefUpTilesEditor;
         numberOfRangedRegenTiles = numberOfRangedRegenTilesEditor;
         numberOfMeleeRegenTiles = numberOfMeleeRegenTilesEditor;
+        numberOfRangedAntiAirTiles = numberOfRangedAntiAirTilesEditor;
+        numberOfMeleeOriginiumTiles = numberOfMeleeOriginiumTilesEditor;
 
         regenerateStage = false;
     }
