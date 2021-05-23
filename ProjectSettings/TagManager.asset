@@ -26,6 +26,7 @@ TagManager:
   - MeleeRegen
   - RangedAntiAir
   - MeleeOriginium
+  - RangedBallista
   layers:
   - Default
   - TransparentFX

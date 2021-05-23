@@ -109,6 +109,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Ranged Ballista"):
+                {
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedBallistaTile;
+                    break;
+                }
+
             default: break;
         }
     }

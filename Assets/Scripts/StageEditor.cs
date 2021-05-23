@@ -73,6 +73,9 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "MeleeOriginium(Clone)":
                     stageGenerator.meleeOriginiumTiles.Add(selectedBlock);
                     break;
+                case "RangedBallista(Clone)":
+                    stageGenerator.rangedBallistaTiles.Add(selectedBlock);
+                    break;
 
                 default:
                     Debug.Log("Did not find list to add block to! Please check StageEditor script.");
@@ -130,6 +133,9 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                     break;
                 case "MeleeOriginium(Clone)":
                     stageGenerator.meleeOriginiumTiles.RemoveAt(stageGenerator.meleeOriginiumTiles.IndexOf(this.gameObject));
+                    break;
+                case "RangedBallista(Clone)":
+                    stageGenerator.rangedBallistaTiles.RemoveAt(stageGenerator.rangedBallistaTiles.IndexOf(this.gameObject));
                     break;
 
                 default:
