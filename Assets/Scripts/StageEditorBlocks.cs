@@ -17,6 +17,7 @@ public class StageEditorBlocks : MonoBehaviour
     public GameObject rangedDefUpTile;
     public GameObject meleeDefUpTile;
     public GameObject rangedRegenTile;
+    public GameObject meleeRegenTile;
 
 
     public GameObject currentlySelectedBlock;
@@ -34,6 +35,7 @@ public class StageEditorBlocks : MonoBehaviour
     public bool rangedDefUp;
     public bool meleeDefUp;
     public bool rangedRegen;
+    public bool meleeRegen;
 
     private void Update()
     {
@@ -113,6 +115,12 @@ public class StageEditorBlocks : MonoBehaviour
         {
             currentlySelectedBlock = rangedRegenTile;
             rangedRegen = false;
+        }
+
+        if (meleeRegen)
+        {
+            currentlySelectedBlock = meleeRegenTile;
+            meleeRegen = false;
         }
     }
 }

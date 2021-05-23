@@ -5,64 +5,67 @@ using UnityEngine.EventSystems;
 
 public class StageEditor : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject stageEditorBlocks;
-    public GameObject stageGenerator;
+    private StageEditorBlocks stageEditorBlocks;
+    private StageGenerator stageGenerator;
 
     public string thisTilesName = "";
 
     private void Start()
     {
-        stageEditorBlocks = GameObject.FindGameObjectWithTag("StageEditorBlocks");
-        stageGenerator = GameObject.FindGameObjectWithTag("StageGenerator");
+        stageEditorBlocks = GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>();
+        stageGenerator = GameObject.FindGameObjectWithTag("StageGenerator").GetComponent<StageGenerator>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            GameObject selectedBlock = Instantiate(stageEditorBlocks.GetComponent<StageEditorBlocks>().currentlySelectedBlock);
+            GameObject selectedBlock = Instantiate(stageEditorBlocks.currentlySelectedBlock);
             selectedBlock.transform.position = new Vector3 (this.transform.position.x, selectedBlock.transform.position.y, this.transform.position.z);
 
             switch (selectedBlock.name)
             {
                 case "MeleeNormal(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().meleeNormalTiles.Add(selectedBlock);
+                    stageGenerator.meleeNormalTiles.Add(selectedBlock);
                     break;
                 case "RangedNormal(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.Add(selectedBlock);
+                    stageGenerator.rangedNormalTiles.Add(selectedBlock);
                     break;
                 case "BottomlessPit(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().bottomlessPitTiles.Add(selectedBlock);
+                    stageGenerator.bottomlessPitTiles.Add(selectedBlock);
                     break;
                 case "EnemySpawn(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().enemySpawnTiles.Add(selectedBlock);
+                    stageGenerator.enemySpawnTiles.Add(selectedBlock);
                     break;
                 case "EnemyDroneSpawn(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().enemyDroneSpawnTiles.Add(selectedBlock);
+                    stageGenerator.enemyDroneSpawnTiles.Add(selectedBlock);
                     break;
                 case "PlayerSpawn(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.Add(selectedBlock);
+                    stageGenerator.playerSpawnTiles.Add(selectedBlock);
                     break;
                 case "MeleeRestricted(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().meleeRestrictedTiles.Add(selectedBlock);
+                    stageGenerator.meleeRestrictedTiles.Add(selectedBlock);
                     break;
                 case "RangedRestricted(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedRestrictedTiles.Add(selectedBlock);
+                    stageGenerator.rangedRestrictedTiles.Add(selectedBlock);
                     break;
                 case "MeleeImpassable(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().meleeImpassableTiles.Add(selectedBlock);
+                    stageGenerator.meleeImpassableTiles.Add(selectedBlock);
                     break;
                 case "RangedCamouflage(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.Add(selectedBlock);
+                    stageGenerator.rangedCamouflageTiles.Add(selectedBlock);
                     break;
                 case "RangedDefUp(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedDefUpTiles.Add(selectedBlock);
+                    stageGenerator.rangedDefUpTiles.Add(selectedBlock);
                     break;
                 case "MeleeDefUp(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().meleeDefUpTiles.Add(selectedBlock);
+                    stageGenerator.meleeDefUpTiles.Add(selectedBlock);
                     break;
                 case "RangedRegen(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedRegenTiles.Add(selectedBlock);
+                    stageGenerator.rangedRegenTiles.Add(selectedBlock);
+                    break;
+                case "MeleeRegen(Clone)":
+                    stageGenerator.meleeRegenTiles.Add(selectedBlock);
                     break;
 
                 default:
@@ -75,43 +78,46 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
             switch (thisTilesName)
             {
                 case "MeleeNormal(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().meleeNormalTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().meleeNormalTiles.IndexOf(this.gameObject));
+                    stageGenerator.meleeNormalTiles.RemoveAt(stageGenerator.meleeNormalTiles.IndexOf(this.gameObject));
                     break;
                 case "RangedNormal(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedNormalTiles.IndexOf(this.gameObject));
+                    stageGenerator.rangedNormalTiles.RemoveAt(stageGenerator.rangedNormalTiles.IndexOf(this.gameObject));
                     break;
                 case "BottomlessPit(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().bottomlessPitTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().bottomlessPitTiles.IndexOf(this.gameObject));
+                    stageGenerator.bottomlessPitTiles.RemoveAt(stageGenerator.bottomlessPitTiles.IndexOf(this.gameObject));
                     break;
                 case "EnemySpawn(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().enemySpawnTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().enemySpawnTiles.IndexOf(this.gameObject));
+                    stageGenerator.enemySpawnTiles.RemoveAt(stageGenerator.enemySpawnTiles.IndexOf(this.gameObject));
                     break;
                 case "EnemyDroneSpawn(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().enemyDroneSpawnTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().enemyDroneSpawnTiles.IndexOf(this.gameObject));
+                    stageGenerator.enemyDroneSpawnTiles.RemoveAt(stageGenerator.enemyDroneSpawnTiles.IndexOf(this.gameObject));
                     break;
                 case "PlayerSpawn(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().playerSpawnTiles.IndexOf(this.gameObject));
+                    stageGenerator.playerSpawnTiles.RemoveAt(stageGenerator.playerSpawnTiles.IndexOf(this.gameObject));
                     break;
                 case "MeleeRestricted(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().meleeRestrictedTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().meleeRestrictedTiles.IndexOf(this.gameObject));
+                    stageGenerator.meleeRestrictedTiles.RemoveAt(stageGenerator.meleeRestrictedTiles.IndexOf(this.gameObject));
                     break;
                 case "RangedRestricted(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedRestrictedTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedRestrictedTiles.IndexOf(this.gameObject));
+                    stageGenerator.rangedRestrictedTiles.RemoveAt(stageGenerator.rangedRestrictedTiles.IndexOf(this.gameObject));
                     break;
                 case "MeleeImpassable(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().meleeImpassableTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().meleeImpassableTiles.IndexOf(this.gameObject));
+                    stageGenerator.meleeImpassableTiles.RemoveAt(stageGenerator.meleeImpassableTiles.IndexOf(this.gameObject));
                     break;
                 case "RangedCamouflage(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedCamouflageTiles.IndexOf(this.gameObject));
+                    stageGenerator.rangedCamouflageTiles.RemoveAt(stageGenerator.rangedCamouflageTiles.IndexOf(this.gameObject));
                     break;
                 case "RangedDefUp(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedDefUpTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedDefUpTiles.IndexOf(this.gameObject));
+                    stageGenerator.rangedDefUpTiles.RemoveAt(stageGenerator.rangedDefUpTiles.IndexOf(this.gameObject));
                     break;
                 case "MeleeDefUp(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().meleeDefUpTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().meleeDefUpTiles.IndexOf(this.gameObject));
+                    stageGenerator.meleeDefUpTiles.RemoveAt(stageGenerator.meleeDefUpTiles.IndexOf(this.gameObject));
                     break;
                 case "RangedRegen(Clone)":
-                    stageGenerator.GetComponent<StageGenerator>().rangedRegenTiles.RemoveAt(stageGenerator.GetComponent<StageGenerator>().rangedRegenTiles.IndexOf(this.gameObject));
+                    stageGenerator.rangedRegenTiles.RemoveAt(stageGenerator.rangedRegenTiles.IndexOf(this.gameObject));
+                    break;
+                case "MeleeRegen(Clone)":
+                    stageGenerator.meleeRegenTiles.RemoveAt(stageGenerator.meleeRegenTiles.IndexOf(this.gameObject));
                     break;
 
                 default:

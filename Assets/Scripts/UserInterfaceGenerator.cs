@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UserInterfaceGenerator : MonoBehaviour
 {
-    public GameObject stageGenerator;
+    public StageGenerator stageGenerator;
 
     public InputField stageWidthField;
     public InputField stageHeightField;
@@ -22,6 +22,7 @@ public class UserInterfaceGenerator : MonoBehaviour
     public InputField numberOfRangedDefUpField;
     public InputField numberOfMeleeDefUpField;
     public InputField numberOfRangedRegenField;
+    public InputField numberOfMeleeRegenField;
 
     public GameObject editorModeUICanvas;
 
@@ -35,20 +36,21 @@ public class UserInterfaceGenerator : MonoBehaviour
 
     private void UpdateUIInputFields()
     {
-        stageWidthField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().stageWidthEditor);
-        stageHeightField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().stageHeightEditor);
-        numberOfHigherGroundTilesField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfRangedNormalTilesEditor);
-        numberOfBottomlessPitsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfBottomlessPitsEditor);
-        numberOfPlayerSpawnsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfPlayerSpawnsEditor);
-        numberOfEnemySpawnsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfEnemySpawnsEditor);
-        numberOfEnemyDroneSpawnsField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfEnemyDroneSpawnsEditor);
-        numberOfGroundTilesRestrictedField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfMeleeRestrictedEditor);
-        numberOfRangedTilesRestrictedField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfRangedRestrictedEditor);
-        numberOfGroundTilesImpassableField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfMeleeImpassableEditor);
-        numberOfRangedCamouflageField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfRangedCamouflageTilesEditor);
-        numberOfRangedDefUpField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfRangedDefUpTilesEditor);
-        numberOfMeleeDefUpField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfMeleeDefUpTilesEditor);
-        numberOfRangedRegenField.text = Convert.ToString(stageGenerator.GetComponent<StageGenerator>().numberOfRangedRegenTilesEditor);
+        stageWidthField.text = Convert.ToString(stageGenerator.stageWidthEditor);
+        stageHeightField.text = Convert.ToString(stageGenerator.stageHeightEditor);
+        numberOfHigherGroundTilesField.text = Convert.ToString(stageGenerator.numberOfRangedNormalTilesEditor);
+        numberOfBottomlessPitsField.text = Convert.ToString(stageGenerator.numberOfBottomlessPitsEditor);
+        numberOfPlayerSpawnsField.text = Convert.ToString(stageGenerator.numberOfPlayerSpawnsEditor);
+        numberOfEnemySpawnsField.text = Convert.ToString(stageGenerator.numberOfEnemySpawnsEditor);
+        numberOfEnemyDroneSpawnsField.text = Convert.ToString(stageGenerator.numberOfEnemyDroneSpawnsEditor);
+        numberOfGroundTilesRestrictedField.text = Convert.ToString(stageGenerator.numberOfMeleeRestrictedEditor);
+        numberOfRangedTilesRestrictedField.text = Convert.ToString(stageGenerator.numberOfRangedRestrictedEditor);
+        numberOfGroundTilesImpassableField.text = Convert.ToString(stageGenerator.numberOfMeleeImpassableEditor);
+        numberOfRangedCamouflageField.text = Convert.ToString(stageGenerator.numberOfRangedCamouflageTilesEditor);
+        numberOfRangedDefUpField.text = Convert.ToString(stageGenerator.numberOfRangedDefUpTilesEditor);
+        numberOfMeleeDefUpField.text = Convert.ToString(stageGenerator.numberOfMeleeDefUpTilesEditor);
+        numberOfRangedRegenField.text = Convert.ToString(stageGenerator.numberOfRangedRegenTilesEditor);
+        numberOfMeleeRegenField.text = Convert.ToString(stageGenerator.numberOfMeleeRegenTilesEditor);
     }
 
     public void UpdateEditorValues()
@@ -73,20 +75,21 @@ public class UserInterfaceGenerator : MonoBehaviour
             stageHeightField.text = Convert.ToString(4);
         }
 
-        stageGenerator.GetComponent<StageGenerator>().stageWidthEditor = Convert.ToInt32(stageWidthField.text);
-        stageGenerator.GetComponent<StageGenerator>().stageHeightEditor = Convert.ToInt32(stageHeightField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfRangedNormalTilesEditor = Convert.ToInt32(numberOfHigherGroundTilesField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfBottomlessPitsEditor = Convert.ToInt32(numberOfBottomlessPitsField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfPlayerSpawnsEditor = Convert.ToInt32(numberOfPlayerSpawnsField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfEnemySpawnsEditor = Convert.ToInt32(numberOfEnemySpawnsField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfEnemyDroneSpawnsEditor = Convert.ToInt32(numberOfEnemyDroneSpawnsField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfMeleeRestrictedEditor = Convert.ToInt32(numberOfGroundTilesRestrictedField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfRangedRestrictedEditor = Convert.ToInt32(numberOfRangedTilesRestrictedField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfMeleeImpassableEditor = Convert.ToInt32(numberOfGroundTilesImpassableField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfRangedCamouflageTilesEditor = Convert.ToInt32(numberOfRangedCamouflageField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfRangedDefUpTilesEditor = Convert.ToInt32(numberOfRangedDefUpField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfMeleeDefUpTilesEditor = Convert.ToInt32(numberOfMeleeDefUpField.text);
-        stageGenerator.GetComponent<StageGenerator>().numberOfRangedRegenTilesEditor = Convert.ToInt32(numberOfRangedRegenField.text);
+        stageGenerator.stageWidthEditor = Convert.ToInt32(stageWidthField.text);
+        stageGenerator.stageHeightEditor = Convert.ToInt32(stageHeightField.text);
+        stageGenerator.numberOfRangedNormalTilesEditor = Convert.ToInt32(numberOfHigherGroundTilesField.text);
+        stageGenerator.numberOfBottomlessPitsEditor = Convert.ToInt32(numberOfBottomlessPitsField.text);
+        stageGenerator.numberOfPlayerSpawnsEditor = Convert.ToInt32(numberOfPlayerSpawnsField.text);
+        stageGenerator.numberOfEnemySpawnsEditor = Convert.ToInt32(numberOfEnemySpawnsField.text);
+        stageGenerator.numberOfEnemyDroneSpawnsEditor = Convert.ToInt32(numberOfEnemyDroneSpawnsField.text);
+        stageGenerator.numberOfMeleeRestrictedEditor = Convert.ToInt32(numberOfGroundTilesRestrictedField.text);
+        stageGenerator.numberOfRangedRestrictedEditor = Convert.ToInt32(numberOfRangedTilesRestrictedField.text);
+        stageGenerator.numberOfMeleeImpassableEditor = Convert.ToInt32(numberOfGroundTilesImpassableField.text);
+        stageGenerator.numberOfRangedCamouflageTilesEditor = Convert.ToInt32(numberOfRangedCamouflageField.text);
+        stageGenerator.numberOfRangedDefUpTilesEditor = Convert.ToInt32(numberOfRangedDefUpField.text);
+        stageGenerator.numberOfMeleeDefUpTilesEditor = Convert.ToInt32(numberOfMeleeDefUpField.text);
+        stageGenerator.numberOfRangedRegenTilesEditor = Convert.ToInt32(numberOfRangedRegenField.text);
+        stageGenerator.numberOfMeleeRegenTilesEditor = Convert.ToInt32(numberOfMeleeRegenField.text);
     }
 
     public void SwitchToEditorMode()

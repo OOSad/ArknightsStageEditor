@@ -16,6 +16,7 @@ public class StageGenerator : MonoBehaviour
     public GameObject rangedDefUp;
     public GameObject meleeDefUp;
     public GameObject rangedRegen;
+    public GameObject meleeRegen;
 
     public List<GameObject> meleeNormalTiles = new List<GameObject>();
     public List<GameObject> rangedNormalTiles = new List<GameObject>();
@@ -30,6 +31,7 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> rangedDefUpTiles = new List<GameObject>();
     public List<GameObject> meleeDefUpTiles = new List<GameObject>();
     public List<GameObject> rangedRegenTiles = new List<GameObject>();
+    public List<GameObject> meleeRegenTiles = new List<GameObject>();
 
     public int stageWidthEditor;
     public int stageHeightEditor;
@@ -45,6 +47,7 @@ public class StageGenerator : MonoBehaviour
     public int numberOfRangedDefUpTilesEditor;
     public int numberOfMeleeDefUpTilesEditor;
     public int numberOfRangedRegenTilesEditor;
+    public int numberOfMeleeRegenTilesEditor;
 
     private int stageWidth = 12;
     private int stageHeight = 6;
@@ -60,6 +63,7 @@ public class StageGenerator : MonoBehaviour
     private int numberOfRangedDefUpTiles = 1;
     private int numberOfMeleeDefUpTiles = 1;
     private int numberOfRangedRegenTiles = 1;
+    private int numberOfMeleeRegenTiles = 1;
 
     public bool regenerateStage = false;
 
@@ -111,6 +115,7 @@ public class StageGenerator : MonoBehaviour
             numberOfRangedDefUpTiles != numberOfRangedDefUpTilesEditor ||
             numberOfMeleeDefUpTiles != numberOfMeleeDefUpTilesEditor ||
             numberOfRangedRegenTiles != numberOfRangedRegenTilesEditor ||
+            numberOfMeleeRegenTiles != numberOfMeleeRegenTilesEditor ||
             regenerateStage == true)
         {
             DestroyStage();
@@ -131,6 +136,7 @@ public class StageGenerator : MonoBehaviour
             PlaceThisTileAroundRandomly(rangedDefUp, numberOfRangedDefUpTiles, rangedDefUpTiles);
             PlaceThisTileAroundRandomly(meleeDefUp, numberOfMeleeDefUpTiles, meleeDefUpTiles);
             PlaceThisTileAroundRandomly(rangedRegen, numberOfRangedRegenTiles, rangedRegenTiles);
+            PlaceThisTileAroundRandomly(meleeRegen, numberOfMeleeRegenTiles, meleeRegenTiles);
         }
     }
 
@@ -174,7 +180,7 @@ public class StageGenerator : MonoBehaviour
 
     private void DestroyStage()
     {
-        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles, rangedDefUpTiles, meleeDefUpTiles, rangedRegenTiles };
+        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles, rangedDefUpTiles, meleeDefUpTiles, rangedRegenTiles, meleeRegenTiles };
 
         for (int i = 0; i < tileListIndex.Count; i++)
         {
@@ -206,6 +212,7 @@ public class StageGenerator : MonoBehaviour
         numberOfRangedDefUpTilesEditor = numberOfRangedDefUpTiles;
         numberOfMeleeDefUpTilesEditor = numberOfMeleeDefUpTiles;
         numberOfRangedRegenTilesEditor = numberOfRangedRegenTiles;
+        numberOfMeleeRegenTilesEditor = numberOfMeleeRegenTiles;
     }
 
     private void UpdatePrivateStageValues()
@@ -224,6 +231,7 @@ public class StageGenerator : MonoBehaviour
         numberOfRangedDefUpTiles = numberOfRangedDefUpTilesEditor;
         numberOfMeleeDefUpTiles = numberOfMeleeDefUpTilesEditor;
         numberOfRangedRegenTiles = numberOfRangedRegenTilesEditor;
+        numberOfMeleeRegenTiles = numberOfMeleeRegenTilesEditor;
 
         regenerateStage = false;
     }

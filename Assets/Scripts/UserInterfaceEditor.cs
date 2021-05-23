@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UserInterfaceEditor : MonoBehaviour
 {
     public GameObject generatorModeUICanvas;
+    public StageEditorBlocks stageEditorBlocks;
 
     public void QueueUpSelectedTile(Dropdown dropdown)
     {
@@ -14,79 +15,85 @@ public class UserInterfaceEditor : MonoBehaviour
         {
             case ("Melee Normal"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeNormal = true;
+                    stageEditorBlocks.meleeNormal = true;
                     break;
                 }
 
             case ("Ranged Normal"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedNormal = true;
+                    stageEditorBlocks.rangedNormal = true;
                     break;
                 }
 
             case ("Bottomless Pit"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().bottomlessPit = true;
+                    stageEditorBlocks.bottomlessPit = true;
                     break;
                 }
 
             case ("Player Spawn"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().playerSpawn = true;
+                    stageEditorBlocks.playerSpawn = true;
                     break;
                 }
 
             case ("Enemy Spawn"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemySpawn = true;
+                    stageEditorBlocks.enemySpawn = true;
                     break;
                 }
 
             case ("Drone Spawn"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().enemyDroneSpawn = true;
+                    stageEditorBlocks.enemyDroneSpawn = true;
                     break;
                 }
 
             case ("Melee Restricted"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeRestricted = true;
+                    stageEditorBlocks.meleeRestricted = true;
                     break;
                 }
 
             case ("Ranged Restricted"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedRestricted = true;
+                    stageEditorBlocks.rangedRestricted = true;
                     break;
                 }
 
             case ("Melee Impassable"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeImpassable = true;
+                    stageEditorBlocks.meleeImpassable = true;
                     break;
                 }
 
             case ("Ranged Camouflage"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedCamouflage = true;
+                    stageEditorBlocks.rangedCamouflage = true;
                     break;
                 }
 
             case ("Ranged Def Up"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedDefUp = true;
+                    stageEditorBlocks.rangedDefUp = true;
                     break;
                 }
 
             case ("Melee Def Up"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().meleeDefUp = true;
+                    stageEditorBlocks.meleeDefUp = true;
                     break;
                 }
 
             case ("Ranged Regen"):
                 {
-                    GameObject.FindGameObjectWithTag("StageEditorBlocks").GetComponent<StageEditorBlocks>().rangedRegen = true;
+                    stageEditorBlocks.rangedRegen = true;
+                    break;
+                }
+
+            case ("Melee Regen"):
+                {
+                    stageEditorBlocks.meleeRegen = true;
                     break;
                 }
 
