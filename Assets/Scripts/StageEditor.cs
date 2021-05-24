@@ -76,6 +76,9 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "RangedBallista(Clone)":
                     stageGenerator.rangedBallistaTiles.Add(selectedBlock);
                     break;
+                case "MeleeHeatPump(Clone)":
+                    stageGenerator.meleeHeatPumpTiles.Add(selectedBlock);
+                    break;
 
                 default:
                     Debug.Log("Did not find list to add block to! Please check StageEditor script.");
@@ -136,6 +139,9 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                     break;
                 case "RangedBallista(Clone)":
                     stageGenerator.rangedBallistaTiles.RemoveAt(stageGenerator.rangedBallistaTiles.IndexOf(this.gameObject));
+                    break;
+                case "MeleeHeatPump(Clone)":
+                    stageGenerator.meleeHeatPumpTiles.RemoveAt(stageGenerator.meleeHeatPumpTiles.IndexOf(this.gameObject));
                     break;
 
                 default:

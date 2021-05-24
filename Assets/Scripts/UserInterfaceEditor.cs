@@ -115,6 +115,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Melee Heat Pump"):
+                {
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.meleeHeatPumpTile;
+                    break;
+                }
+
             default: break;
         }
     }

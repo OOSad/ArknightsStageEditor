@@ -21,6 +21,7 @@ public class StageEditorBlocks : MonoBehaviour
     public GameObject rangedAntiAirTile;
     public GameObject meleeOriginiumTile;
     public GameObject rangedBallistaTile;
+    public GameObject meleeHeatPumpTile;
 
 
     public GameObject currentlySelectedBlock;

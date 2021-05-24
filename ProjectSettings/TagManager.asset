@@ -27,6 +27,7 @@ TagManager:
   - RangedAntiAir
   - MeleeOriginium
   - RangedBallista
+  - MeleeHeatPump
   layers:
   - Default
   - TransparentFX
