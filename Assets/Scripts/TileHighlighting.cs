@@ -10,16 +10,40 @@ public class TileHighlighting : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void Start()
     {
-        tileDefault = this.GetComponent<Renderer>().material;
+        try
+        {
+            tileDefault = this.GetComponent<Renderer>().material;
+        }
+
+        catch (MissingComponentException)
+        {
+            tileDefault = this.GetComponentInChildren<Renderer>().material;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        this.GetComponent<Renderer>().material = tileHighlighted;
+        try
+        {
+            this.GetComponent<Renderer>().material = tileHighlighted;
+        }
+
+        catch (MissingComponentException)
+        {
+            this.GetComponentInChildren<Renderer>().material = tileHighlighted;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        this.GetComponent<Renderer>().material = tileDefault;
+        try
+        {
+            this.GetComponent<Renderer>().material = tileDefault;
+        }
+
+        catch (MissingComponentException)
+        {
+            this.GetComponentInChildren<Renderer>().material = tileDefault;
+        }
     }
 }

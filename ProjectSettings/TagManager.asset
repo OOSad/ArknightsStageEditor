@@ -28,6 +28,8 @@ TagManager:
   - MeleeOriginium
   - RangedBallista
   - MeleeHeatPump
+  - RangedFrostAltar
+  - FrostAltarEffect
   layers:
   - Default
   - TransparentFX

@@ -121,6 +121,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Ranged Frost Altar"):
+                {
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedFrostAltarTile;
+                    break;
+                }
+
             default: break;
         }
     }
