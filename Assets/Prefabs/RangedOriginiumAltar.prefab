@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee40912003f59f04795571b40dd6a09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frostAltarEffect: {fileID: 4799848798497253941, guid: 7b394f28276196b448fd9a0b037d1a8e,
+  altarAoE: {fileID: 4799848798497253941, guid: 7b394f28276196b448fd9a0b037d1a8e,
     type: 3}
 --- !u!1 &7462019701558541190
 GameObject:

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AltarEffect : MonoBehaviour
+public class AltarAoE : MonoBehaviour
 {
     private void Start()
     {
