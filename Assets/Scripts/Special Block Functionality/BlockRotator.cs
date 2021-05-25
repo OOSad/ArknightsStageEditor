@@ -6,27 +6,34 @@ using UnityEngine.EventSystems;
 
 public class BlockRotator : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    Mouse mouse;
-    private bool canRotate = false;
+    private Mouse mouse;
+
+    private bool mouseIsOverTile = false;
 
     void Update()
     {
+        // Must fetch mouse on Update instead of Start or OnEnable else the entire program crashes for some reason.
+        // This only seems to happen after building and running on the WebGL player.
         mouse = Mouse.current;
 
-        if (mouse.scroll.y.ReadValue() != 0 && canRotate == true)
+        if (mouseIsOverTile == true && mouse.scroll.y.ReadValue() > 0)
         {
             this.gameObject.transform.Rotate(0, 90, 0);
         }
-        
+
+        if (mouseIsOverTile == true && mouse.scroll.y.ReadValue() < 0)
+        {
+            this.gameObject.transform.Rotate(0, -90, 0);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        canRotate = true;
+        mouseIsOverTile = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        canRotate = false;
+        mouseIsOverTile = false;
     }
 }
