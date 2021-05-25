@@ -133,6 +133,18 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Ranged Push Up"):
+                {
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedPushUpTile;
+                    break;
+                }
+
+            case ("Melee Push Up"):
+                {
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.meleePushUpTile;
+                    break;
+                }
+
             default: break;
         }
     }

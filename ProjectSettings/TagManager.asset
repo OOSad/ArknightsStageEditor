@@ -31,6 +31,8 @@ TagManager:
   - RangedFrostAltar
   - FrostAltarEffect
   - RangedOriginiumAltar
+  - RangedPushUp
+  - MeleePushUp
   layers:
   - Default
   - TransparentFX

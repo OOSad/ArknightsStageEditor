@@ -29,6 +29,8 @@ public class UserInterfaceGenerator : MonoBehaviour
     public InputField numberOfMeleeHeatPumpsField;
     public InputField numberOfRangedFrostAltarField;
     public InputField numberOfRangedOriginiumAltarField;
+    public InputField numberOfRangedPushUpField;
+    public InputField numberOfMeleePushUpField;
 
     public GameObject editorModeUICanvas;
 
@@ -63,6 +65,8 @@ public class UserInterfaceGenerator : MonoBehaviour
         numberOfMeleeHeatPumpsField.text = Convert.ToString(stageGenerator.numberOfMeleeHeatPumpTilesEditor);
         numberOfRangedFrostAltarField.text = Convert.ToString(stageGenerator.numberOfRangedFrostAltarTilesEditor);
         numberOfRangedOriginiumAltarField.text = Convert.ToString(stageGenerator.numberOfRangedOriginiumAltarTilesEditor);
+        numberOfRangedPushUpField.text = Convert.ToString(stageGenerator.numberOfRangedPushUpTilesEditor);
+        numberOfMeleePushUpField.text = Convert.ToString(stageGenerator.numberOfMeleePushUpTilesEditor);
     }
 
     public void UpdateEditorValues()
@@ -108,6 +112,8 @@ public class UserInterfaceGenerator : MonoBehaviour
         stageGenerator.numberOfMeleeHeatPumpTilesEditor = Convert.ToInt32(numberOfMeleeHeatPumpsField.text);
         stageGenerator.numberOfRangedFrostAltarTilesEditor = Convert.ToInt32(numberOfRangedFrostAltarField.text);
         stageGenerator.numberOfRangedOriginiumAltarTilesEditor = Convert.ToInt32(numberOfRangedOriginiumAltarField.text);
+        stageGenerator.numberOfRangedPushUpTilesEditor = Convert.ToInt32(numberOfRangedPushUpField.text);
+        stageGenerator.numberOfMeleePushUpTilesEditor = Convert.ToInt32(numberOfMeleePushUpField.text);
     }
 
     public void SwitchToEditorMode()

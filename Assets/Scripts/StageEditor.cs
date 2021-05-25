@@ -85,6 +85,12 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                 case "RangedOriginiumAltar(Clone)":
                     stageGenerator.rangedOriginiumAltarTiles.Add(selectedBlock);
                     break;
+                case "RangedPushUp(Clone)":
+                    stageGenerator.rangedPushUpTiles.Add(selectedBlock);
+                    break;
+                case "MeleePushUp(Clone)":
+                    stageGenerator.meleePushUpTiles.Add(selectedBlock);
+                    break;
 
                 default:
                     Debug.Log("Did not find list to add block to! Please check StageEditor script.");
@@ -154,6 +160,12 @@ public class StageEditor : MonoBehaviour, IPointerClickHandler
                     break;
                 case "RangedOriginiumAltar(Clone)":
                     stageGenerator.rangedOriginiumAltarTiles.RemoveAt(stageGenerator.rangedOriginiumAltarTiles.IndexOf(this.gameObject));
+                    break;
+                case "RangedPushUp(Clone)":
+                    stageGenerator.rangedPushUpTiles.RemoveAt(stageGenerator.rangedPushUpTiles.IndexOf(this.gameObject));
+                    break;
+                case "MeleePushUp(Clone)":
+                    stageGenerator.meleePushUpTiles.RemoveAt(stageGenerator.meleePushUpTiles.IndexOf(this.gameObject));
                     break;
 
                 default:

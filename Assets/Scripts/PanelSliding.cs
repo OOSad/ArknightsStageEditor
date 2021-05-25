@@ -8,7 +8,7 @@ public class PanelSliding : MonoBehaviour, IDragHandler
 {
     private Mouse mouse;
 
-    private int minScrollValue = -140;
+    private int minScrollValue = -178;
 
     private void Update()
     {
