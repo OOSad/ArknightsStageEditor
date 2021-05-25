@@ -127,6 +127,12 @@ public class UserInterfaceEditor : MonoBehaviour
                     break;
                 }
 
+            case ("Ranged Originium Altar"):
+                {
+                    stageEditorBlocks.currentlySelectedBlock = stageEditorBlocks.rangedOriginiumAltarTile;
+                    break;
+                }
+
             default: break;
         }
     }

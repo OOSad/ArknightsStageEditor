@@ -22,6 +22,7 @@ public class StageGenerator : MonoBehaviour
     public GameObject rangedBallista;
     public GameObject meleeHeatPump;
     public GameObject rangedFrostAltar;
+    public GameObject rangedOriginiumAltar;
 
     public List<GameObject> meleeNormalTiles = new List<GameObject>();
     public List<GameObject> rangedNormalTiles = new List<GameObject>();
@@ -42,6 +43,7 @@ public class StageGenerator : MonoBehaviour
     public List<GameObject> rangedBallistaTiles = new List<GameObject>();
     public List<GameObject> meleeHeatPumpTiles = new List<GameObject>();
     public List<GameObject> rangedFrostAltarTiles = new List<GameObject>();
+    public List<GameObject> rangedOriginiumAltarTiles = new List<GameObject>();
 
 
     public int stageWidthEditor;
@@ -64,6 +66,7 @@ public class StageGenerator : MonoBehaviour
     public int numberOfRangedBallistaTilesEditor;
     public int numberOfMeleeHeatPumpTilesEditor;
     public int numberOfRangedFrostAltarTilesEditor;
+    public int numberOfRangedOriginiumAltarTilesEditor;
 
     private int stageWidth = 12;
     private int stageHeight = 6;
@@ -85,6 +88,7 @@ public class StageGenerator : MonoBehaviour
     private int numberOfRangedBallistaTiles = 2;
     private int numberOfMeleeHeatPumpTiles = 2;
     private int numberOfRangedFrostAltarTiles = 1;
+    private int numberOfRangedOriginiumAltarTiles = 1;
 
     public bool regenerateStage = false;
 
@@ -142,6 +146,7 @@ public class StageGenerator : MonoBehaviour
             numberOfRangedBallistaTiles != numberOfRangedBallistaTilesEditor ||
             numberOfMeleeHeatPumpTiles != numberOfMeleeHeatPumpTilesEditor ||
             numberOfRangedFrostAltarTiles != numberOfRangedFrostAltarTilesEditor ||
+            numberOfRangedOriginiumAltarTiles != numberOfRangedOriginiumAltarTilesEditor ||
             regenerateStage == true)
         {
             DestroyStage();
@@ -168,6 +173,7 @@ public class StageGenerator : MonoBehaviour
             PlaceThisTileAroundRandomly(rangedBallista, numberOfRangedBallistaTiles, rangedBallistaTiles);
             PlaceThisTileAroundRandomly(meleeHeatPump, numberOfMeleeHeatPumpTiles, meleeHeatPumpTiles);
             PlaceThisTileAroundRandomly(rangedFrostAltar, numberOfRangedFrostAltarTiles, rangedFrostAltarTiles);
+            PlaceThisTileAroundRandomly(rangedOriginiumAltar, numberOfRangedOriginiumAltarTiles, rangedOriginiumAltarTiles);
         }
     }
 
@@ -211,7 +217,7 @@ public class StageGenerator : MonoBehaviour
 
     private void DestroyStage()
     {
-        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles, rangedDefUpTiles, meleeDefUpTiles, rangedRegenTiles, meleeRegenTiles, rangedAntiAirTiles, meleeOriginiumTiles, rangedBallistaTiles, meleeHeatPumpTiles, rangedFrostAltarTiles };
+        List<List<GameObject>> tileListIndex = new List<List<GameObject>>() { meleeNormalTiles, rangedNormalTiles, bottomlessPitTiles, enemySpawnTiles, enemyDroneSpawnTiles, playerSpawnTiles, meleeRestrictedTiles, rangedRestrictedTiles, meleeImpassableTiles, rangedCamouflageTiles, rangedDefUpTiles, meleeDefUpTiles, rangedRegenTiles, meleeRegenTiles, rangedAntiAirTiles, meleeOriginiumTiles, rangedBallistaTiles, meleeHeatPumpTiles, rangedFrostAltarTiles, rangedOriginiumAltarTiles };
 
         for (int i = 0; i < tileListIndex.Count; i++)
         {
@@ -249,6 +255,7 @@ public class StageGenerator : MonoBehaviour
         numberOfRangedBallistaTilesEditor = numberOfRangedBallistaTiles;
         numberOfMeleeHeatPumpTilesEditor = numberOfMeleeHeatPumpTiles;
         numberOfRangedFrostAltarTilesEditor = numberOfRangedFrostAltarTiles;
+        numberOfRangedOriginiumAltarTilesEditor = numberOfRangedOriginiumAltarTiles;
     }
 
     private void UpdatePrivateStageValues()
@@ -273,6 +280,7 @@ public class StageGenerator : MonoBehaviour
         numberOfRangedBallistaTiles = numberOfRangedBallistaTilesEditor;
         numberOfMeleeHeatPumpTiles = numberOfMeleeHeatPumpTilesEditor;
         numberOfRangedFrostAltarTiles = numberOfRangedFrostAltarTilesEditor;
+        numberOfRangedOriginiumAltarTiles = numberOfRangedOriginiumAltarTilesEditor;
 
         regenerateStage = false;
     }

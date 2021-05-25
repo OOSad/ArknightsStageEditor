@@ -30,6 +30,7 @@ TagManager:
   - MeleeHeatPump
   - RangedFrostAltar
   - FrostAltarEffect
+  - RangedOriginiumAltar
   layers:
   - Default
   - TransparentFX
