@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class CameraPlacement : MonoBehaviour
 {
-    public StageGenerator stageGeneratorScene;
+    public StageGenerator stageGenerator;
 
     private void Start()
     {
-        this.transform.position = new Vector3(stageGeneratorScene.stageWidthEditor / 2, 8, -1.2f);
+        PositionCameraAboveStageAtStart();
+    }
+
+    public void PositionCameraAboveStageAtStart()
+    {
+        this.transform.position = new Vector3(stageGenerator.stageWidthEditor / 2, 8, -1.2f);
     }
 
     public void UpdateCameraPosition()
     {
-        float camera_x = stageGeneratorScene.stageWidthEditor / 2;
-        float camera_y = stageGeneratorScene.stageHeightEditor + 2;
+        float camera_x = stageGenerator.stageWidthEditor / 2;
+        float camera_y = stageGenerator.stageHeightEditor + 2;
 
-        if (stageGeneratorScene.stageWidthEditor % 2 == 0)
+        if (stageGenerator.stageWidthEditor % 2 == 0)
         {
             this.transform.position = new Vector3(camera_x, camera_y, -1.2f);
         }
@@ -26,4 +31,5 @@ public class CameraPlacement : MonoBehaviour
             this.transform.position = new Vector3(camera_x + 0.5f, camera_y, -1.2f);
         }
     }
+
 }

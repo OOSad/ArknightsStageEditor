@@ -6,13 +6,19 @@ using UnityEngine.InputSystem;
 public class CameraPanning : MonoBehaviour
 {
     private Mouse mouse;
+
     private void Update()
     {
         mouse = Mouse.current;
 
         if (mouse.rightButton.isPressed)
         {
-            this.transform.Translate((mouse.delta.x.ReadValue() * -1) * Time.deltaTime, 0, 0);
+            PanCameraLeftOrRight(mouse.delta.x.ReadValue());
         }
+    }
+
+    private void PanCameraLeftOrRight(float mouse_delta_x_axis)
+    {
+        this.transform.Translate((mouse_delta_x_axis * -1) * Time.deltaTime, 0, 0);
     }
 }
