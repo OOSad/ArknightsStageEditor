@@ -14,7 +14,6 @@ public class PanelSliding : MonoBehaviour, IDragHandler
     {
         // Must fetch mouse on Update instead of Start or OnEnable else the entire program crashes for some reason.
         // This only seems to happen after building and running on the WebGL player.
-
         mouse = Mouse.current;
 
         if (this.GetComponent<RectTransform>().localPosition.y < minScrollValue)
@@ -29,6 +28,11 @@ public class PanelSliding : MonoBehaviour, IDragHandler
     }
 
     public void OnDrag(PointerEventData eventData)
+    {
+        SlidePanelUpOrDown();
+    }
+
+    private void SlidePanelUpOrDown()
     {
         this.transform.localPosition += new Vector3(0, mouse.delta.y.ReadValue(), 0);
     }

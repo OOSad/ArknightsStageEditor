@@ -12,7 +12,7 @@ public class HeatPump : MonoBehaviour
 
     private void Start()
     {
-        material = this.GetComponent<Renderer>().material;
+        material = ReturnMaterialAssignedToThisObject(this.gameObject);
 
         InvokeRepeating("TurnUpTheHeat", Random.Range(8.0f, 12.0f), Random.Range(8.0f, 12.0f));
     }
@@ -53,6 +53,11 @@ public class HeatPump : MonoBehaviour
     private void TurnDownTheHeat()
     {
         turnDownTheHeat = true;
+    }
+
+    private Material ReturnMaterialAssignedToThisObject(GameObject thisObject)
+    {
+        return thisObject.GetComponent<Renderer>().material;
     }
 
 }
