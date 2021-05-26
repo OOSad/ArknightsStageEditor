@@ -5792,7 +5792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345fdd4cbec90f64697c6e3b4dd2b16d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageGeneratorScene: {fileID: 475344532}
+  stageGenerator: {fileID: 475344532}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
