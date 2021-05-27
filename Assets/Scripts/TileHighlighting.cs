@@ -6,44 +6,39 @@ using UnityEngine.EventSystems;
 public class TileHighlighting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Material tileHighlighted;
-    private Material tileDefault;
+
+    private List<Renderer> rendererList = new List<Renderer>();
+    private List<Material> materialDefaultList = new List<Material>();
 
     private void Start()
     {
-        try
-        {
-            tileDefault = this.GetComponent<Renderer>().material;
-        }
+        rendererList.Add(this.transform.GetComponent<Renderer>());
 
-        catch (MissingComponentException)
+        for (int i = 0; i < this.transform.childCount; i++)
         {
-            tileDefault = this.GetComponentInChildren<Renderer>().material;
+            rendererList.Add(this.transform.GetChild(i).GetComponent<Renderer>());
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        try
+        for (int i = 0; i < rendererList.Count; i++)
         {
-            this.GetComponent<Renderer>().material = tileHighlighted;
+            materialDefaultList.Add(rendererList[i].material);
         }
 
-        catch (MissingComponentException)
+        for (int i = 0; i < rendererList.Count; i++)
         {
-            this.GetComponentInChildren<Renderer>().material = tileHighlighted;
+            rendererList[i].material = tileHighlighted;
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        try
+        for (int i = 0; i < rendererList.Count; i++)
         {
-            this.GetComponent<Renderer>().material = tileDefault;
-        }
-
-        catch (MissingComponentException)
-        {
-            this.GetComponentInChildren<Renderer>().material = tileDefault;
+            rendererList[i].material = materialDefaultList[i];
         }
     }
+
 }

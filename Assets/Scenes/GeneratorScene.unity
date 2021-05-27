@@ -2935,9 +2935,9 @@ MonoBehaviour:
     type: 3}
   meleeHeatPump: {fileID: 3240979498133792823, guid: bb4f3a516778c9a4d9cfbad8c6c0f4f0,
     type: 3}
-  rangedFrostAltar: {fileID: 6743901821536288084, guid: 0e5d2d79161c46246aa59be3312583b8,
+  rangedFrostAltar: {fileID: 1537686966656762072, guid: 9abbb64076b2b1445867bd9f7d103283,
     type: 3}
-  rangedOriginiumAltar: {fileID: 6743901821536288084, guid: 0248ea65c3f13f44f8c810e37575f869,
+  rangedOriginiumAltar: {fileID: 1537686966656762072, guid: 93663fadae9be1949869a6d278bcfb49,
     type: 3}
   rangedPushUp: {fileID: 1537686966656762072, guid: 0117f94e3f3916947a9e72c77589b4cb,
     type: 3}
@@ -9039,9 +9039,9 @@ MonoBehaviour:
     type: 3}
   meleeHeatPumpTile: {fileID: 3240979498133792823, guid: bb4f3a516778c9a4d9cfbad8c6c0f4f0,
     type: 3}
-  rangedFrostAltarTile: {fileID: 6743901821536288084, guid: 0e5d2d79161c46246aa59be3312583b8,
+  rangedFrostAltarTile: {fileID: 1537686966656762072, guid: 9abbb64076b2b1445867bd9f7d103283,
     type: 3}
-  rangedOriginiumAltarTile: {fileID: 6743901821536288084, guid: 0248ea65c3f13f44f8c810e37575f869,
+  rangedOriginiumAltarTile: {fileID: 1537686966656762072, guid: 93663fadae9be1949869a6d278bcfb49,
     type: 3}
   rangedPushUpTile: {fileID: 1537686966656762072, guid: 0117f94e3f3916947a9e72c77589b4cb,
     type: 3}
